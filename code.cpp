@@ -6,27 +6,31 @@
 using namespace std;
 class Solution {
     public:
-        int a;
+        int a , b, c;
         int solution();
 
 };
 
 int Solution::solution(){
-    for(int i = 0; i < a; i++){
-        int arr[5];
-        cin >> arr[0] >> arr[1] >> arr[2] >> arr[3];
-        if (arr[0] - arr[1] == arr[1]-arr[2]){
-            arr[4] = arr[3] + (arr[3] - arr[2]);
-        }else if (arr[1] / arr[0] == arr[2] / arr[1])
-        {
-            arr[4] = arr[3] * (arr[2]/arr[1]);
+    int d = sqrt(pow(b,2) - 4*a*c);
+    int x1 = (-b + d) / 2 * a;
+    int x2 = (-b - d) / 2 * a;
+    if (b*b - 4*a*c < 0){
+        cout << "No real root";
+    }else if (x1 == x2){
+        cout << "Two same roots x="<<x1;
+
+    }else{
+        if (x1 > x2){
+            cout << "Two different roots x1="<<x1<<" , x2="<<x2;
+        }else{
+            cout << "Two different roots x1="<<x2<<" , x2="<<x1;
         }
-        cout << arr[0] << " " << arr[1] << " " << arr[2] << " " << arr[3] << " " << arr[4] << endl;
-    }
+    } 
 }
 int main(void){
     Solution x;
-    while(cin>>x.a){
-        x.solution();
-    }
+    cin>>x.a>>x.b>>x.c;
+    x.solution();
+    return 0;
 }

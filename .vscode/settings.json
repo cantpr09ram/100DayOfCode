@@ -1,3 +1,7 @@
 {
-    "terminal.integrated.fontSize": 12
+    "terminal.integrated.fontSize": 12,
+    "files.associations": {
+        "*.py": "python",
+        "random": "cpp"
+    }
 }
