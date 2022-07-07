@@ -1,18 +1,30 @@
-#include <iostream>
+#include<iostream>
+#include<string>
+#include<algorithm>
+#include<math.h>
+#include<vector>
 using namespace std;
 
-int main(){
-    int m, d, destiny;
-    cin >> m >> d;
-    destiny = (m*2+d)%3;
-
-    if (destiny == 0){
-        cout << "普通";
-    }else if (destiny == 1)
-    {
-        cout << "吉";
+class year{
+    public:
+    int a;
+    string Dosomething();
+};
+string year::Dosomething(){
+    if((a%4==0 && a%100!=0) || a%400==0){
+        string a;
+        a="閏年";
+        return a;
     }else{
-        cout<<"大吉";
+        string b;
+        b="平年";
+        return b;
     }
-    return 0;
+}
+
+int main(void){
+    year x;
+    while(cin>>x.a){
+        cout<<x.Dosomething()<<endl;
+    }
 }
