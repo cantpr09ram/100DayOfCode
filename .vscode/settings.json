@@ -3,5 +3,6 @@
     "files.associations": {
         "*.py": "python",
         "random": "cpp"
-    }
+    },
+    "C_Cpp.errorSquiggles": "Disabled"
 }
