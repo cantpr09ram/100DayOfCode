@@ -13,8 +13,8 @@ class Solution {
 
 int Solution::solution(){
     int d = sqrt(pow(b,2) - 4*a*c);
-    int x1 = (-b + d) / 2 * a;
-    int x2 = (-b - d) / 2 * a;
+    int x1 = (-b + d) / (2 * a);
+    int x2 = (-b - d) / (2 * a);
     if (b*b - 4*a*c < 0){
         cout << "No real root";
     }else if (x1 == x2){
