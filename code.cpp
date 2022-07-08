@@ -22,5 +22,6 @@ int main(void){
     Solution x;
     getline(cin, x.a);
     x.solution();
+ 
     return 0;
 }
