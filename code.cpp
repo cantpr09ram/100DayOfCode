@@ -8,7 +8,6 @@ class Solution {
     public:
         string a;
         void solution();
-
 };
 
 void Solution::solution(){
