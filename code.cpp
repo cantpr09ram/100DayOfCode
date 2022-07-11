@@ -6,21 +6,29 @@
 using namespace std;
 class Solution {
     public:
-        string a;
+        int a;
         void solution();
 };
 
 void Solution::solution(){
-    for (int i = 0; i < a.length(); i++){
-    char c = a[i];
-    c = c -7;
-    cout << c;
-   }
+    int b = 2 ,n = 0;
+    while(a != 1){
+        n = 0;
+        while (a % b == 0){
+            if (n == 0) cout << b;
+            a = a / b;
+            n++;
+        }
+        if (n > 1) 
+            cout << "^" << n;
+        if ( a != 1 && n != 0) 
+            cout << " * ";
+        b++;
+    }
 }
 int main(void){
     Solution x;
-    getline(cin, x.a);
+    cin >> x.a;
     x.solution();
- 
     return 0;
 }
