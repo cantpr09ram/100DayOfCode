@@ -6,29 +6,27 @@
 using namespace std;
 class Solution {
     public:
-        int a;
+        int r, c;
         void solution();
 };
 
 void Solution::solution(){
-    int b = 2 ,n = 0;
-    while(a != 1){
-        n = 0;
-        while (a % b == 0){
-            if (n == 0) cout << b;
-            a = a / b;
-            n++;
+    int i, j, arr[r][c];
+    for(i = 0; i < r; i++){
+        for(j = 0; j < c; j++){
+            cin >> arr[i][j];
         }
-        if (n > 1) 
-            cout << "^" << n;
-        if ( a != 1 && n != 0) 
-            cout << " * ";
-        b++;
+    }
+    for(i = 0; i < c; i++){
+        for(j = 0; j < r; j++){
+           cout << arr[j][i] << " ";
+        }
+        cout << endl;
     }
 }
 int main(void){
     Solution x;
-    cin >> x.a;
-    x.solution();
+    while(cin >> x.r>>x.c)
+        x.solution();
     return 0;
 }

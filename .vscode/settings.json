@@ -2,7 +2,8 @@
     "terminal.integrated.fontSize": 12,
     "files.associations": {
         "*.py": "python",
-        "random": "cpp"
+        "random": "cpp",
+        "iostream": "cpp"
     },
     "C_Cpp.errorSquiggles": "Disabled"
 }
