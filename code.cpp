@@ -6,27 +6,16 @@
 using namespace std;
 class Solution {
     public:
-        int r, c;
+        int a;
         void solution();
 };
 
 void Solution::solution(){
-    int i, j, arr[r][c];
-    for(i = 0; i < r; i++){
-        for(j = 0; j < c; j++){
-            cin >> arr[i][j];
-        }
-    }
-    for(i = 0; i < c; i++){
-        for(j = 0; j < r; j++){
-           cout << arr[j][i] << " ";
-        }
-        cout << endl;
-    }
+    cout << a - 1; 
 }
 int main(void){
     Solution x;
-    while(cin >> x.r>>x.c)
-        x.solution();
+    cin >> x.a;
+    x.solution();
     return 0;
 }
