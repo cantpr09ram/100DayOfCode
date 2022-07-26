@@ -10,59 +10,44 @@
 using namespace std;
 class Solution {
     public:
-        string a;
+        string a, b;
+        char op;
         void solution();
 };
 
 void Solution::solution(){
-    map<char, int> map2 = {
-        {'A', 10,},
-        {'B', 11,},
-        {'C', 12,},
-        {'D', 13,},
-        {'E', 14,},
-        {'F', 15,},
-        {'G', 16,},
-        {'H', 17,},
-        {'I', 34,},
-        {'J', 18,},
-        {'k', 19,},
-        {'L', 20,},
-        {'M', 21,},
-        {'N', 22,},
-        {'O', 35,},
-        {'P', 23,},
-        {'Q', 24,},
-        {'R', 25,},
-        {'S', 26,},
-        {'T', 27,},
-        {'U', 28,},
-        {'V', 29,},
-        {'W', 32,},
-        {'X', 30,},
-        {'Y', 31,},
-        {'Z', 33,}};
-
-        int ans = (map2[a[0]] % 10 )* 9 + (map2[a[0]] / 10);
-        //cout << (map2[a[0]] % 10 )* 9 <<" "<< (map2[a[0]] / 10) << endl;
-        //cout << ans << endl;
-        for (int i = 1; i < 9 ; i++){
-            ans += (a[i] -'0') * (9 -i);
-            //cout << ans << " " <<(a[i] - '0') * (9-i) <<" "<< a[i] - '0' <<" "<< i << endl;
-        }
-        ans += (a[9] - '0');
-        if (ans % 10 == 0 && ans != 0){
-            cout << "real";
-            //cout << ans;
+    //string to number
+    int arr_a[500] = {}, arr_b[500] = {}, ans[500] = {};
+    int len_a = a.length();
+    int gap = 500 - len_a;
+    while(true){
+        if (len_a == -1){
+            break;
         }else{
-            cout << "fake";
+            arr_a[len_a + gap] = a[len_a];
+            len_a -- ;
+            cout << len_a <<" "<< arr_a[len_a + gap] <<" "<< a[len_a]<<endl;
         }
-
+    }
+    int len_b = b.length();
+    gap = 500 - len_b;
+    while(true){
+        if (len_b == -1){
+            break;
+        }else{
+            arr_b[len_b + gap] = b[len_b];
+            len_b -- ;
+        }
+    }
+    int i = 500;
+    while(arr_a[i] != 0){
+        cout << arr_a[i];
+        i--;
+    }
 }
-// 2 + 7*9 + 1*8 + 1*7 + 2*6 + 6*5 + 6*4 + 3*3 + 8*2 + 3*1 + 6 = 180
 int main(void){
     Solution x;
-    cin >> x.a;
+    cin >> x.a >> x.op >> x.b;
     x.solution();
     return 0;
 }
