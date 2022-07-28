@@ -55,16 +55,25 @@ void Solution::solution(){
     case '-':
         for(int i = 0; i < 500; i++){
             ans[i] = arr_a[i] - arr_b[i];
-            if(ans[i] < 0){
-                ans[i] += 10;
-                ans[i+1] --;
-            }
         }
         for(int i = 0; i < 500; i++){
-            if (ans[i] < 0){
-                
+            if(ans[i] < 0 /*&& ans[i + 1] > 0*/){
+                ans[i] += 10;
+                ans[i+1] -= 1;
             }
         }
+
+        for(int i = 0; i < 500; i++){
+            if (ans[i] < 0){
+                int j = 500 - 1;
+                while (j >= 0 && a[j] == 0) j--;
+                cout << '-';
+                while (j >= 0) cout << (10 - a[j--]) % 10;
+                break;
+            }
+        }
+        print(ans);
+        break;
     case '*':
         for(int i = 0; i < 500; i++){
             for(int j = 0; j < 500; j++){
@@ -78,7 +87,7 @@ void Solution::solution(){
         print(ans);
         break;
     case '/':
-
+        print(ans);
         break;
     default:
         break;
