@@ -15,6 +15,7 @@ class Solution {
         void solution();   
         void scan(string s, int a[]);
         void print(int a[]);
+        void sub(int a[], int b[], int c[]);
         bool less_than(int a[], int b[]);
 };
 
@@ -33,6 +34,34 @@ void Solution::print(int a[500]){
     else
         while (i >= 0) cout << a[i--];
 }
+void Solution::sub(int a[500], int b[500],int ans[500]){
+    for(int i = 0; i < 500; i++){
+        ans[i] = a[i] - b[i];
+        //if (ans[i] != 0) cout <<a[i]<<" "<<b[i]<<" "<< ans[i]<<endl;
+    }
+    /*
+    for(int i = 0; i < 500; i++){
+            cout << ans[i];
+    }
+    cout << endl;
+    print(ans);cout<<endl;
+    */
+    for(int i = 0; i < 500; i++){
+        if(ans[i] < 0 ){
+            ans[i] += 10;
+            ans[i+1] -= 1;
+            //cout << i;
+        }
+    }
+}
+bool Solution::less_than(int a[500], int b[500])
+{
+    // 從高位數開始比，對應的位數相比較。
+    for (int i=500-1; i>=0; i--)
+        if (a[i] != b[i])   // 一旦ab不一樣大，馬上回傳結果。
+            return a[i] < b[i];
+    return false;   // 完全相等
+}
 
 void Solution::solution(){
     //string to array
@@ -40,8 +69,7 @@ void Solution::solution(){
     scan(b, arr_b);
     scan(a, arr_a);
 
-    switch (op)
-    {
+    switch (op){
     case '+':
         for(int i = 0; i < 500; i++){
             ans[i] += arr_a[i] + arr_b[i];
@@ -53,26 +81,14 @@ void Solution::solution(){
         print(ans);
         break;
     case '-':
-        for(int i = 0; i < 500; i++){
-            ans[i] = arr_a[i] - arr_b[i];
+        if(less_than(arr_a, arr_b)){
+            sub(arr_b, arr_a, ans);
+            cout << "-";
+            print(ans);
+        }else{
+            sub(arr_a, arr_b, ans);
+            print(ans);
         }
-        for(int i = 0; i < 500; i++){
-            if(ans[i] < 0 /*&& ans[i + 1] > 0*/){
-                ans[i] += 10;
-                ans[i+1] -= 1;
-            }
-        }
-
-        for(int i = 0; i < 500; i++){
-            if (ans[i] < 0){
-                int j = 500 - 1;
-                while (j >= 0 && a[j] == 0) j--;
-                cout << '-';
-                while (j >= 0) cout << (10 - a[j--]) % 10;
-                break;
-            }
-        }
-        print(ans);
         break;
     case '*':
         for(int i = 0; i < 500; i++){
