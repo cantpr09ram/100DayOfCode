@@ -87,6 +87,7 @@ void Solution::add(int a[], int b[], int ans[]){
 void Solution::solution(){
     //string to array
     int arr_a[500], arr_b[500], ans[500] = {};
+    int len_a = a.length(), len_b = b.length();
     scan(b, arr_b);
     scan(a, arr_a);
 
@@ -94,6 +95,9 @@ void Solution::solution(){
     case '+':
         add(arr_a, arr_b, ans);
         print(ans);
+        for(int i = 0; i < 500; i++){
+            cout<<ans[i];
+        }
         break;
     case '-':
         if(less_than(arr_a, arr_b)){
@@ -110,33 +114,28 @@ void Solution::solution(){
         print(ans);
         break;
     case '/':
-        {
-            int len_a = 0;
-            int len_b = 0;
-            for(int i = 0; i < 500; i++){
-                if(arr_a[i] > 0) len_a += 1;
-                if(arr_b[i] > 0) len_b += 1;
-            }
-            int degit = len_a;
-            for(int i = 0; i < len_a - len_b; i++){
-                while(!less_than(arr_a, arr_b) && degit >= len_b){
-                sub(arr_a, arr_b, arr_a);
-                ans[len_a - len_b - i] ++;
-                print(ans);
-                len_a = degit;
-                if(len_a < len_b && arr_b[len_b - 1] == 0) len_b = len_a;
+        for (int i = 0; i < (len_a - len_b + 1); i++){
+            while(arr_a[len_a - i] > 0){
+                for(int j; j < len_b; j++){
+                    arr_a[len_a - i - j] -= arr_b[j];
+                    if(arr_a[len_a - i - j] < 0 && j > 0){
+                        arr_a[len_a - i - j] += 10;
+                        arr_a[len_a - i - j + 1] --;
+                    }
                 }
-                if(less_than(arr_a, arr_b)){//若被除數 小於 除數，除數減小一位。
-                    for(i=1 ;i < len_b; i++)
-                        arr_b[i-1]=arr_b[i];
-                    arr_b[i-1]=0;
-                    if(len_a < len_b)
-                        len_b--;
-                }
+                ans[len_a - len_b + 1 - i] += 1;
             }
-            print(ans);
-            break;
+            for(int j; j < len_b; j++){
+                arr_a[len_a - i - j] += arr_b[j];
+
+            }
+            ans[len_a - len_b  + 1 - i]--;
+            arr_a[len_a - i - 1] += arr_a[len_a - i]*10;
+            arr_a[len_a - i] = 0;
         }
+        print(ans);
+        break;
+
     default:
         break;
     }
