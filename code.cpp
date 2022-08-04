@@ -115,23 +115,44 @@ void Solution::solution(){
         break;
     case '/':
         for (int i = 0; i < (len_a - len_b + 1); i++){
-            while(arr_a[len_a - i] > 0){
-                for(int j; j < len_b; j++){
-                    arr_a[len_a - i - j] -= arr_b[j];
-                    if(arr_a[len_a - i - j] < 0 && j > 0){
-                        arr_a[len_a - i - j] += 10;
-                        arr_a[len_a - i - j + 1] --;
-                    }
+            cout<<arr_a[len_a - i -1]<<endl;
+            while(arr_a[len_a - i -1] > 0){
+                //cout<<arr_a[len_a - i - 1];//<<arr_b[len_b - 1]<<len_a<<len_b<<endl;
+                for(int j = 0; j < len_b; j++){
+                    arr_a[len_a - i - j - 1] -= arr_b[len_b - j - 1];
                 }
-                ans[len_a - len_b + 1 - i] += 1;
+                ans[len_a - len_b - i] += 1;
+                
+                /*print(arr_a);
+                cout<<"a";
+                cout<<endl;
+                */
             }
+            if(arr_a[len_a - i - 1] < 0){
+                for(int j = 0; j < len_b; j++){
+                    arr_a[len_a - i - j - 1] += arr_b[len_b - j - 1];
+                }
+                ans[len_a - len_b - i] --;
+                arr_a[len_a - i - 2] += arr_a[len_a - i - 1] * 10;//沒執行到?
+                arr_a[len_a - 1 - 1] = 0;
+            }
+           for(int j = 0; j < 500; j++){
+            cout<<arr_a[j]<<endl;
+           }
+            /*
             for(int j; j < len_b; j++){
-                arr_a[len_a - i - j] += arr_b[j];
+                arr_a[len_a - i - j - 1] += arr_b[j];
 
             }
-            ans[len_a - len_b  + 1 - i]--;
-            arr_a[len_a - i - 1] += arr_a[len_a - i]*10;
-            arr_a[len_a - i] = 0;
+            */
+            /*
+            if(ans[len_a - len_b  + 1 - i] > 0){
+                ans[len_a - len_b  + 1 - i]--;
+                arr_a[len_a - i - 1] += arr_a[len_a - i]*10;
+                arr_a[len_a- i] = 0;
+            }
+            //print(ans);
+            */
         }
         print(ans);
         break;
