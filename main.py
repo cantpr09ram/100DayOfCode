@@ -1,7 +1,7 @@
-def lengthOfLastWord(s: str) -> int:
-    a = [i for i in s.split(' ') if len(i) != 0]
-    print(a)
-    return len(a[-1])
-a = "   fly me   to   the moon  "
-s = lengthOfLastWord(a)
-print(s)
+class Solution:
+    def plusOne(self, digits: List[int]) -> List[int]:
+        a_len = len(digits)
+        ans = 0
+        for i in range(a_len):
+            ans += digits[i] * (10**(a_len-i - 1))
+        return [i for i in str(ans+1)]
