@@ -1,12 +1,9 @@
 #include <iostream>
-#include <math.h>
 using namespace std;
 
-int main(void){
-    long long int a, b;
-    while(cin >> a >> b){
-        cout << abs(a - b);
-    }
-    
-    return 0;
+int main(int argc, char** argv) {
+	int a;
+	cin >> a;
+	cout << (a/12)*50 + (a%12)*5; 
+	return 0;
 }
