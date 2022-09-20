@@ -1,8 +1,8 @@
 #include <iostream>
 using namespace std;
 int main() {
-  string boy, gril;
-  cin >> gril>>boy;
-  cout <<gril <<" and "<<boy<<" sitting in the tree";
+  int years;
+  cin >> years;
+  cout << years - 1911;
   return 0;
 }
