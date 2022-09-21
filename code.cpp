@@ -1,11 +1,10 @@
 #include <iostream>
-#include <iomanip>
 using namespace std;
 
 int main() {
-  double num ;
+  int num;
   cin >> num;
-  double ans = (num - 32) * 5/9;
-  cout <<fixed<< setprecision(3) <<ans<<endl;
+  if(num % 2 == 0) cout <<"Even";
+  else cout<<"Odd";
   return 0;
 }
