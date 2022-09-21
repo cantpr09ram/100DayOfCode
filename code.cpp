@@ -2,8 +2,8 @@
 using namespace std;
 
 int main() {
-  int num1, num2;
-  cin >> num1 >> num2;
-  cout <<(num2+100 - num1) % 100<<endl;
+  int num;
+  cin >> num;
+  cout << (num / abs(num))*int(num != 0);
   return 0;
 }
