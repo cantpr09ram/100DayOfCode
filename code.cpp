@@ -4,7 +4,6 @@ using namespace std;
 int main() {
   int num;
   cin >> num;
-  if(num % 2 == 0) cout <<"Even";
-  else cout<<"Odd";
+  cout <<abs(num)<<endl;
   return 0;
 }
