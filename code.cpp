@@ -3,8 +3,9 @@
 using namespace std;
 
 int main() {
-  int ans[3];
-  cin >> ans[0] >> ans[1] >> ans[2];
-  cout << *max_element(ans, ans+3);
+  int h, m;
+  cin >> h >> m;
+  if ((h*60 + m > 450) && (h*60 + m < 1020)) cout<<"At Schoo"<<endl;
+  else cout <<"Off School"<<endl;
   return 0;
 }
