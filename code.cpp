@@ -1,16 +1,23 @@
 #include <iostream>
-#include <algorithm>
+
 using namespace std;
 
 int main() {
-  int b, ans = 0;
-  cin >>b;
-  for(int i = 0; i < b+1; i++){
-    if (i % 2 != 0){
-      ans += i;
-      //cout<<ans<<endl;
+  int a,b,d;
+  cin >> a >> b >> d;
+  if(a < b){
+  while(a <= b){
+      cout << a <<" ";
+      a = a + d;
     }
+    cout << endl;
+  }else if(a == b){
+      cout << a << endl;
+  }else{
+      while(b <= a){
+      cout << a <<" ";
+      a = a + d;
+      }
   }
-  cout << ans;
   return 0;
 }
