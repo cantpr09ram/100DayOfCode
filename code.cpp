@@ -1,18 +1,16 @@
 #include <iostream>
+#include <algorithm>
 using namespace std;
 
 int main() {
-  int year, num;
-  cin >>num;
-  for(int i =0; i<num;i++){
-    cout <<"Case "<<i+1<<": ";
-    cin >> year;
-    if (((year % 4 ==0)&&(year % 100 != 0))||(year %400 == 0)){
-      cout<<"a leap year"<<endl;
-    }else{
-      cout<<"a normal year"<<endl;
+  int num, max = 0, num2;
+  cin >> num;
+  for (int i =0; i < num; i++){
+    cin >> num2;
+    if (num2 > max){
+      max = num2;
     }
   }
-  
+  cout <<max;
   return 0;
 }
