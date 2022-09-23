@@ -1,16 +1,13 @@
 #include <iostream>
-
 using namespace std;
 
 int main() {
-  int day, num1 = 0, num2, ans = 0;
-  cin >> day;
-  while(num1 < day){
-    cin >> num2;
-    num1 += 1;
-    ans += num2 * num1;
+  int year;
+  cin >> year;
+  if (((year % 4 ==0)&&(year % 100 != 0))||(year %400 == 0)){
+    cout<<"a leap year";
+  }else{
+    cout<<"a normal year";
   }
-  cout << ans;
-
   return 0;
 }
