@@ -2,15 +2,20 @@
 #include <algorithm>
 using namespace std;
 
-int main() {
-  int num, max = 0, num2;
-  cin >> num;
-  for (int i =0; i < num; i++){
-    cin >> num2;
-    if (num2 > max){
-      max = num2;
+int main(void){
+  int c;
+  cin >> c;
+  for(int i = 0; i< c; i++){
+    int num;
+    cin >> num;
+    int shop[num] = {};
+    for(int j = 0; j < num; j++){
+      cin >> shop[j];
     }
+    //cout <<shop[2];
+    int max = *max_element(shop, shop+sizeof(shop) / sizeof(int)), min = *min_element(shop, shop+sizeof(shop) / sizeof(int));
+    //cout << max << min;
+    cout << (max - min)*2<<endl;
   }
-  cout <<max;
   return 0;
 }
