@@ -3,13 +3,22 @@
 using namespace std;
 
 int main(void){
-  long long int h, m, s;
-  cin >>h >> m >> s;
-  m += s / 60;
-  s = s % 60;
-  h += m / 60;
-  m = m % 60;
-  h = h % 24;
-  printf("%s:%s:%s",h,m,s);
+  string num;
+  cin >> num;
+  int i = num.size() - 1;
+  int isZero = 0;
+  while(i > -1){
+    if (isZero == 0 && num[i] != '0'){
+      cout << num[i];
+      isZero = 1;
+    }
+    else if(isZero == 1){
+      cout<< num[i];
+    }
+    i--;
+  }
+  if(isZero == 0){
+    cout<<0;
+  }
   return 0;
 }
