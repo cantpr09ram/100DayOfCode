@@ -1,10 +1,10 @@
-#include <iostream>
+#include<iostream>
 using namespace std;
 
-int main(void){
-	int a,b;
-	while(cin >>a>>b){
-		cout << a*2 + b*2;	
-	}
-	return 0;
+int main(){
+  int num, ans;
+  while(cin >> num){
+   cout<<num * 3 / 2<<endl;
+  }
+  return 0;
 }
