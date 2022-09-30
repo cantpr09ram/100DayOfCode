@@ -2,15 +2,19 @@
 using namespace std;
 
 int main(){
-    int a, b, t;
-    while( cin >> a >> b ){
-        while( b!=0 ){
-            t = b;
-            b = a%b;
-            a = t;
-            //swap a and b
-        }
-        cout << a << endl;
-    }
-    return 0;
+  int num, ans;
+  while(cin >> num){
+    num += 1;
+    ans = num;
+    while(num > 3){
+      if(num == 3){
+        break;
+      }
+      int change = num / 3;
+      num -= change*3;
+      ans += change; 
+    } 
+    cout << ans<<endl;
+  }
+  return 0;
 }
