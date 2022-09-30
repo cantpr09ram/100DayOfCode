@@ -1,24 +1,17 @@
 #include <iostream>
 #include <algorithm>
+ #include<iomanip>
 using namespace std;
 
 int main(void){
-  string num;
-  cin >> num;
-  int i = num.size() - 1;
-  int isZero = 0;
-  while(i > -1){
-    if (isZero == 0 && num[i] != '0'){
-      cout << num[i];
-      isZero = 1;
-    }
-    else if(isZero == 1){
-      cout<< num[i];
-    }
-    i--;
-  }
-  if(isZero == 0){
-    cout<<0;
-  }
+  long long int h, m, s;
+  cin >>h >> m >> s;
+  m += s / 60;
+  s = s % 60;
+  h += m / 60;
+  m = m % 60;
+  h = h % 24;
+  cout<<setfill('0')<<setw(2)<<h<<":"<<setfill('0')<<setw(2)<<m<<":"<<setfill('0')<<setw(2)<<s;
+  //printf("%lld:%lld:%lld",h,m,s);
   return 0;
 }
