@@ -4,17 +4,12 @@ using namespace std;
 int main(){
   int num, ans;
   while(cin >> num){
-    num += 1;
-    ans = num;
-    while(num > 3){
-      if(num == 3){
-        break;
+    for(int i = 0; i < num; i++){
+      for(int j = 0; j < i+1; j++){
+        cout << '*';
       }
-      int change = num / 3;
-      num -= change*3;
-      ans += change; 
-    } 
-    cout << ans<<endl;
+      cout<<endl;
+    }
   }
   return 0;
 }
