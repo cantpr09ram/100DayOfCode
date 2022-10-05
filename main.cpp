@@ -28,4 +28,21 @@ scanf("%d",&N);
     }
 }
 
- 
+#include<iostream>
+using namespace std;
+
+int main(){
+  ios_base::sync_with_stdio(0), cin.tie(0);
+  int num;
+  cin>>num;
+  for(int i = 0; i< num; i++){
+    int a, b ,x = 1,y = 1;
+    cin>>a>>b;
+    if(a > 3) x = a/3;
+    if(b > 3) y = b/3;
+
+    cout<<x*y<<endl; 
+  }
+  return 0;
+}
+ 	AC (5ms, 352KB) 
