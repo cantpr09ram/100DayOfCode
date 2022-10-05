@@ -2,22 +2,19 @@
 using namespace std;
 
 int main(){
-  int num, ans;
-  while(cin >> num){
-    int star = 1, dash = num - 1 - 1;
-    for(int i = 0; i < num; i++){
-      for(int j = 0; j < num*2 - 1;j++){
-        if(j <= dash + star && j > dash){
-          cout << '*';
-        }
-        else{
-          cout << '_';
-        }
-      }
-      cout<<endl;
-      star += 2;
-      dash -= 1;
+  int step, num;
+  while(cin >> step>>num){
+    if(num == 0 && step ==0){
+      cout<<"Ok!"<<endl;
     }
-  return 0;
+    else if(num == 0){
+      cout<<"Impossib1e!"<<endl;
+    }
+    else if(step % num == 0){
+      cout<<"Ok!"<<endl;
+    }else{
+      cout<<"Impossib1e!"<<endl;
+    }
   }
+  return 0;
 }
