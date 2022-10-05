@@ -2,23 +2,28 @@
 using namespace std;
 
 int main(){
-  ios_base::sync_with_stdio(0), cin.tie(0);
-  int num1, num2, ans = 0;
-  cin>> num1 >> num2;
-  for(int i = num1; i < num2+1; i++){
-    ans += (i % 2 == 0);
+  int a;
+  cin>>a;
+  for(int i = 0; i<a;i++){
+    int a, f;
+    cin>>a;
+    cin>>f;
+    for(int j = 0; j<f;j++){
+      //for(int k = 0; k < a; k++){
+        int print_num = 1, temp = 1;
+        while(print_num != 0){
+          for(int l = 0; l < print_num; l++){
+            cout<<print_num;
+          }
+          cout<<endl;
+          if(print_num == a){
+            temp = -temp;
+          }
+          print_num += temp;
+        }
+        cout<<endl;
+      //}
+      //cout<<endl;
+    }
   }
-  cout<<ans;
-  return 0;
-}
-
-#include<iostream>
-using namespace std;
-
-int main(){
-  ios_base::sync_with_stdio(0), cin.tie(0);
-  int num1, num2, ans = 0;
-  cin>> num1 >> num2;
-  cout<<abs(((num2-num1)+(num1%2==0)+(num2%2==0))/2);
-  return 0;
 }
