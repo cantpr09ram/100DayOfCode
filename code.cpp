@@ -10,7 +10,7 @@ int main(){
       use -= 1000;
       if( iv<= 29){
         cp += 10;
-      }else if ((iv >= 30) && (iv <39)){
+      }else if ((iv >= 30) && (iv < 40)){
         cp += 50;
       }
       else{
@@ -26,5 +26,3 @@ int main(){
   cout<<max+1<<" "<<maxcp;
   return 0;
 }
-
- 
