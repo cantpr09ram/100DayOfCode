@@ -1,28 +1,24 @@
 #include <iostream>
 using namespace std;
 int main(){
-  int n, dust, max, maxcp = 0;
-  cin >> n>>dust;
-  for(int i = 0; i < n; i++){
-    int cp, iv, use = dust;
-    cin >> cp >> iv;
-    while(use > 1000){
-      use -= 1000;
-      if( iv<= 29){
-        cp += 10;
-      }else if ((iv >= 30) && (iv < 40)){
-        cp += 50;
-      }
-      else{
-        cp += 100; 
-      }
-    }
-
-    if(cp > maxcp){
-      maxcp = cp;
-      max = i;
-    }
+  int price, price_a = 0, price_b = 0;
+  cin >> price;
+  price_a = price;
+  price_b = price;
+  if (price >= 1000){
+    price_a = price - (price/ 1000)*100;//琪琪 1
   }
-  cout<<max+1<<" "<<maxcp;
-  return 0;
+  if (price >= 2000){
+    price_b = price - (price / 2000)*200;//天天 0
+  }
+
+  if(price_a > price_b){
+    cout<<price_b<<" "<< 0;
+  }else if (price_a == price_b){
+    cout<<price_b<<" "<< 0;
+  }else if(price_b > price_a){
+    cout<<price_a<<" "<< 1;
+  }
+   return 0;    
 }
+ 
