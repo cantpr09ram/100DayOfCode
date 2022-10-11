@@ -2,7 +2,7 @@
 #include <algorithm>
 using namespace std;
 int main(){
-  int num, max_ans = 0, ans = 0,sum = 0;
+  int num, max_ans = 0, ans = 0,sum = 0, temp;
   string player;
   cin >> num >> player;
   int len_player = player.length();
@@ -18,7 +18,12 @@ int main(){
       //cout <<player_num[i]<<endl;
       if(((i+1) % num == 0) || (i == len_player - 1)){
         if(max_ans <= sum){
-          int temp = (i+1) / num;
+          if((i == len_player - 1) && ((i + 1) % num != 0)){
+            temp = (i+1)/num + 1;
+            //cout<<temp<<endl;
+          }else{
+            temp = (i+1) / num;
+          }
           ans = max(temp, ans);
           max_ans = sum;
           //cout << ans <<" "<< max_ans<<endl;
@@ -30,3 +35,4 @@ int main(){
   cout << ans <<" "<< max_ans;
   return 0;    
 }
+//5 10121315
