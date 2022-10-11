@@ -1,24 +1,32 @@
 #include <iostream>
+#include <algorithm>
 using namespace std;
 int main(){
-  int price, price_a = 0, price_b = 0;
-  cin >> price;
-  price_a = price;
-  price_b = price;
-  if (price >= 1000){
-    price_a = price - (price/ 1000)*100;//琪琪 1
-  }
-  if (price >= 2000){
-    price_b = price - (price / 2000)*200;//天天 0
-  }
+  int num, max_ans = 0, ans = 0,sum = 0;
+  string player;
+  cin >> num >> player;
+  int len_player = player.length();
+  int player_num [len_player] = { 0 };
 
-  if(price_a > price_b){
-    cout<<price_b<<" "<< 0;
-  }else if (price_a == price_b){
-    cout<<price_b<<" "<< 0;
-  }else if(price_b > price_a){
-    cout<<price_a<<" "<< 1;
+  for(int i = 0; i<len_player; i++){
+    //player_num[i] = player_num[i] * 10 + (player[i] - 48);
+    player_num[len_player - i -1] = player[i] - 48;
   }
-   return 0;    
+  
+  for(int i = 0; i<len_player; i++){
+      sum += player_num[i];
+      //cout <<player_num[i]<<endl;
+      if(((i+1) % num == 0) || (i == len_player - 1)){
+        if(max_ans <= sum){
+          int temp = (i+1) / num;
+          ans = max(temp, ans);
+          max_ans = sum;
+          //cout << ans <<" "<< max_ans<<endl;
+        }
+        sum = 0;
+     }
+  }
+  
+  cout << ans <<" "<< max_ans;
+  return 0;    
 }
- 
