@@ -1,14 +1,19 @@
 #include <iostream>
 #include <algorithm>
+#include <function>
 using namespace std;
-int main(){
-  int king, small, count, day;
-  cin>> king >> small;
-  while(count < small){
-    count += count;
-    count += king;
-    day++;
+int main() {
+  int year;
+  while (cin>>year){
+    if (year == 0){
+        break;
+    }else{
+        if (((year % 4 ==0)&&(year % 100 != 0))||(year %400 == 0)){
+            cout<<"a leap year"<<endl;
+        }else{
+            cout<<"a normal year"<<endl;
+        }
+    }
   }
-  cout<<day;
-  return 0;    
+  return 0;
 }
