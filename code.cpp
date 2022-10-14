@@ -1,26 +1,28 @@
 #include <iostream>
-#include <algorithm>
-#include <functional>
+#include<iomanip>
 
 using namespace std;
 int main() {
-  string num;
-  int ver_code;
-  int num_list[9] = {0};
-  while(cin>>num){
-    for(int i = 0;i<num.length();i++){
-      num_list[i] = num[i] - 48;
-    }
-    
-    ver_code = num_list[8] + num_list[7]*10 + num_list[6]*100;
-    
-    sort(num_list,num_list+9,greater<int>());
-    
-    if(num_list[0]*num_list[0] + num_list[1]*num_list[1] == ver_code){
-      cout<<"Good Morning!"<<endl;
-    }else{
-      cout<<"SPY!"<<endl;
-    }
+  int h, m, s, gap;
+  cin >>h>>m>>s>>gap;
+  gap %= 36;
+  h += gap;
+  m += gap*30;
+
+  if(m < 0){
+    cout<<"hi";
+    h += (m/60 + 1);
+    m += (m/60 + 1)*60;
+  }else{
+    h += m/60;
+    m %= 60;
   }
+
+  h %= 36;
+  if(h < 0){
+    h = 36 + h%36;
+  }
+  cout <<h<<":"<<setfill('0')<<setw(2)<<m<<":"<<setfill('0')<<setw(2)<<s;
   return 0;
 }
+//2 15 13 -9
