@@ -1,18 +1,25 @@
 #include <iostream>
 #include <algorithm>
-#include <function>
+#include <functional>
+
 using namespace std;
 int main() {
-  int year;
-  while (cin>>year){
-    if (year == 0){
-        break;
+  string num;
+  int ver_code;
+  int num_list[9] = {0};
+  while(cin>>num){
+    for(int i = 0;i<num.length();i++){
+      num_list[i] = num[i] - 48;
+    }
+    
+    ver_code = num_list[8] + num_list[7]*10 + num_list[6]*100;
+    
+    sort(num_list,num_list+10,greater<int>());
+
+    if(num_list[1]*num_list[1] + num_list[2]*num_list[2] == ver_code){
+      cout<<"Good Morning!"<<endl;
     }else{
-        if (((year % 4 ==0)&&(year % 100 != 0))||(year %400 == 0)){
-            cout<<"a leap year"<<endl;
-        }else{
-            cout<<"a normal year"<<endl;
-        }
+      cout<<"SPY!"<<endl;
     }
   }
   return 0;
