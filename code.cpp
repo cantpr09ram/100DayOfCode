@@ -14,9 +14,9 @@ int main() {
     
     ver_code = num_list[8] + num_list[7]*10 + num_list[6]*100;
     
-    sort(num_list,num_list+10,greater<int>());
-
-    if(num_list[1]*num_list[1] + num_list[2]*num_list[2] == ver_code){
+    sort(num_list,num_list+9,greater<int>());
+    
+    if(num_list[0]*num_list[0] + num_list[1]*num_list[1] == ver_code){
       cout<<"Good Morning!"<<endl;
     }else{
       cout<<"SPY!"<<endl;
