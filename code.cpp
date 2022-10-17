@@ -10,9 +10,10 @@ int main() {
   m += gap*30;
 
   if(m < 0){
-    cout<<"hi";
-    h += (m/60 + 1);
-    m += (m/60 + 1)*60;
+    //cout<<m<<m/60<<endl;
+    //cout<<(m/60 + 1)<<endl;
+    h = h + (m/60 - 1);
+    m = m - (m/60 - 1)*60;
   }else{
     h += m/60;
     m %= 60;
