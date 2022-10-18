@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 #define int long long
-
+//f707
 main (){
     cin.tie(0); cout.sync_with_stdio(false);
     int N;
