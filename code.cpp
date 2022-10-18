@@ -1,29 +1,16 @@
-#include <iostream>
-#include<iomanip>
-
+#include <bits/stdc++.h>
 using namespace std;
-int main() {
-  int h, m, s, gap;
-  cin >>h>>m>>s>>gap;
-  gap %= 36;
-  h += gap;
-  m += gap*30;
+#define int long long
 
-  if(m < 0){
-    //cout<<m<<m/60<<endl;
-    //cout<<(m/60 + 1)<<endl;
-    h = h + (m/60 - 1);
-    m = m - (m/60 - 1)*60;
-  }else{
-    h += m/60;
-    m %= 60;
-  }
-
-  h %= 36;
-  if(h < 0){
-    h = 36 + h%36;
-  }
-  cout <<h<<":"<<setfill('0')<<setw(2)<<m<<":"<<setfill('0')<<setw(2)<<s;
-  return 0;
+main (){
+    cin.tie(0); cout.sync_with_stdio(false);
+    int N;
+    stack<int> numbers;
+    while (cin>>N) {
+      cout<<"hi"<<numbers.size()<<N<<endl;
+      if (!N) {
+        cout<<"end"<<numbers.size();
+        break;
+      }else numbers.push(N);
+    }
 }
-//2 15 13 -9
