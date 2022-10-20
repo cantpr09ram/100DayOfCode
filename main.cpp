@@ -3,5 +3,9 @@
 using  namespace std;
 
 int main(){
-cout << max(5/2,6/2);
+    stack<int> num;
+    int a;
+    while(cin>>a){
+        num.push(a);
+    }
 }
