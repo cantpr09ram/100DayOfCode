@@ -1,14 +1,13 @@
-#include <bits/stdc++.h>
-#include <iomanip>
+#include<iostream>
 using namespace std;
-int main(void){
-  int num, a, b, c;
-  cin>>num;
-  cin>>a>>b>>c;
-  for(int i=num; i>0;i--){
-    if(((i != a) && (i != b)) && (i != c)){
-      cout<<"No. "<<i<<endl;
-    }
+  int main(){
+  int a,b;
+  cin>>a>>b;
+  if(b%a==0){
+    cout<<b/a;
+  }
+  else if(b%a!=0){
+    cout<<(b/a)+1;
   }
   return 0;
 }
