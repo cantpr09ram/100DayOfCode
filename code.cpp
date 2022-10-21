@@ -1,13 +1,21 @@
 #include<iostream>
 using namespace std;
   int main(){
-  int a,b;
-  cin>>a>>b;
-  if(b%a==0){
-    cout<<b/a;
+  int now, ans = 0, times;
+  int floor[10000];
+  cin>>times;
+  for(int i = 0;i<times;i++){
+    cin>>floor[i];
   }
-  else if(b%a!=0){
-    cout<<(b/a)+1;
+  now = 1;
+  for(int i=0; i<times;i++){
+    if(floor[i] > now){
+      ans += (floor[i] - now)*3;
+    }else{
+      ans += (now - floor[i])*2;
+    }
+    now = floor[i];
   }
+  cout<<ans;
   return 0;
 }
