@@ -1,21 +1,23 @@
 #include<iostream>
 using namespace std;
   int main(){
-  int now, ans = 0, times;
-  int floor[10000];
-  cin>>times;
-  for(int i = 0;i<times;i++){
-    cin>>floor[i];
+  int num, temp = 0, group = 0, ans;
+  cin >>num;
+  while(temp < num){
+    group++;
+    temp += group*4;
   }
-  now = 1;
-  for(int i=0; i<times;i++){
-    if(floor[i] > now){
-      ans += (floor[i] - now)*3;
-    }else{
-      ans += (now - floor[i])*2;
-    }
-    now = floor[i];
+  ans = num -(temp - group*4);
+  //cout<<ans<<endl;
+
+  if(ans/group == 0|| ((ans/group==1)&&(ans%group==0))){
+    cout<<"Pen";
+  }else if(ans/group == 1|| ((ans/group==2)&&(ans%group==0))){
+    cout<<"Pineapple";
+  }else if(ans/group == 2 || ((ans/group==3)&&(ans%group==0))){
+    cout<<"Apple";
+  }else if((ans/group == 3) || ((ans/group == 0)||(ans%group==0))){
+    cout<<"Pineapple pen";
   }
-  cout<<ans;
   return 0;
 }
