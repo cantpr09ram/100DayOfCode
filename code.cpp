@@ -1,23 +1,16 @@
 #include<iostream>
 using namespace std;
   int main(){
-  int num, temp = 0, group = 0, ans;
-  cin >>num;
-  while(temp < num){
-    group++;
-    temp += group*4;
-  }
-  ans = num -(temp - group*4);
-  //cout<<ans<<endl;
+  double a, now = 1, b = 0;
 
-  if(ans/group == 0|| ((ans/group==1)&&(ans%group==0))){
-    cout<<"Pen";
-  }else if(ans/group == 1|| ((ans/group==2)&&(ans%group==0))){
-    cout<<"Pineapple";
-  }else if(ans/group == 2 || ((ans/group==3)&&(ans%group==0))){
-    cout<<"Apple";
-  }else if((ans/group == 3) || ((ans/group == 0)||(ans%group==0))){
-    cout<<"Pineapple pen";
+  cin>>a;
+
+  while(b < a){  
+    b += 1/now;
+    now++;
+    //cout<<now<<endl;
+    //cout<<b<<endl;
   }
+  printf("%d\n",(int)now-1);
   return 0;
 }
