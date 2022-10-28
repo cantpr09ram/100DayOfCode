@@ -2,19 +2,16 @@
 using namespace std;
 
 int main(){
-  int a;
-  cin>>a;
-  for(int i=0; i<a;i++){
-    int a, b, c, total, f = 0;
-    cin>>a>>b>>c;
-    total = a+b;
-    while(total>=c){
-      int drink = total / c;
-      f += drink;
-      total %=c;
-      total += drink;
+  int a, b, c, ascii = 0;
+  while(cin>>a>>b>>c){
+    for(int i=1;i<=c;i++){
+      if((i%a==0)||(i%b==0)){
+        //cout<<i<<endl;
+        ascii += i;
+      }
     }
-    cout<<f<<endl;
+    cout<<char(64+ascii%26);
+    ascii = 0;
   }
   return 0;
 }
