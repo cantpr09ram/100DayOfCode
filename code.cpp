@@ -1,19 +1,19 @@
 #include<iostream>
+#include<math.h>
+
 using namespace std;
 
 int main(){
-  int a, b, c, ascii = 0;
-  while(cin>>a>>b>>c){
-    for(int i=1;i<=c;i++){
-      if((i%a==0)||(i%b==0)){
-        //cout<<i<<endl;
-        ascii += i;
-      }
+  long int a;
+  while (cin>>a){
+    int ans = 0;
+    double c5 = 1.0;
+    while(a>=pow(5.0,c5)){
+      ans += a/pow(5.0,c5);
+      c5++;
+      //cout<<c5<<endl;
     }
-    cout<<char(64+ascii%26);
-    ascii = 0;
+    cout<<ans<<endl;
   }
   return 0;
 }
-
-
