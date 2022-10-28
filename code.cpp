@@ -1,16 +1,23 @@
 #include<iostream>
 using namespace std;
   int main(){
-  double a, now = 1, b = 0;
+  int a, now = 1, b = 0;
 
-  cin>>a;
-
-  while(b < a){  
-    b += 1/now;
-    now++;
-    //cout<<now<<endl;
-    //cout<<b<<endl;
+  while(cin>>a){
+    while(now < a){  
+    if(a%now == 0){
+      b += now;
+      //cout<<now<<endl;
+    }
+      now++;
+      //cout<<now<<endl;
+      //cout<<b<<endl;
+    }
+    if(a > b) cout<<"虧數"<<endl;
+    else if(a == b) cout<<"完全數"<<endl;
+    else cout<<"盈數"<<endl;
+    now = 1;
+    b = 0;
   }
-  printf("%d\n",(int)now-1);
   return 0;
 }
