@@ -1,19 +1,26 @@
 #include<iostream>
-#include<math.h>
-
 using namespace std;
-
 int main(){
-  long int a;
-  while (cin>>a){
-    int ans = 0;
-    double c5 = 1.0;
-    while(a>=pow(5.0,c5)){
-      ans += a/pow(5.0,c5);
-      c5++;
-      //cout<<c5<<endl;
-    }
-    cout<<ans<<endl;
+  int n,m,x=1,one,all=0;
+  cin>>n>>m;
+  int num[n];
+  for(int i=0;i<n;i++){
+    cin>>num[i];
   }
-  return 0;
+  one=num[0];
+  for(int i=0;i<n;i++){
+    if(x==1){
+      if(num[i]>=one+m){
+        all=all+(num[i]-one);
+        x=0;
+        one=num[i];
+      }
+    }else if(x==0){
+      if(num[i]<=one-m){
+        one=num[i];
+        x=1;
+      }
+    }
+  }
+  cout<<all;
 }
