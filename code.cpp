@@ -1,26 +1,21 @@
 #include<iostream>
 using namespace std;
 int main(){
-  int n,m,x=1,one,all=0;
-  cin>>n>>m;
-  int num[n];
-  for(int i=0;i<n;i++){
-    cin>>num[i];
-  }
-  one=num[0];
-  for(int i=0;i<n;i++){
-    if(x==1){
-      if(num[i]>=one+m){
-        all=all+(num[i]-one);
-        x=0;
-        one=num[i];
-      }
-    }else if(x==0){
-      if(num[i]<=one-m){
-        one=num[i];
-        x=1;
-      }
+  int x1, x2, y1,y2, a, max = 0,temp=0, min = 1000000;
+  cin>>a;
+  cin>>x1>>y1;
+  while(a-1){
+    cin>>x2>>y2;
+    temp = abs(x1-x2) + abs(y1-y2);
+    if(temp > max){
+      max = temp;
     }
+    if(temp<min){
+      min = temp;
+    }
+    x1 = x2;
+    y1 = y2;
+    a--;
   }
-  cout<<all;
+  cout<<max<<" "<<min;
 }
