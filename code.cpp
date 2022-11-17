@@ -1,21 +1,64 @@
-#include<iostream>
+#include <iostream>
 using namespace std;
-int main(){
-  int x1, x2, y1,y2, a, max = 0,temp=0, min = 1000000;
-  cin>>a;
-  cin>>x1>>y1;
-  while(a-1){
-    cin>>x2>>y2;
-    temp = abs(x1-x2) + abs(y1-y2);
-    if(temp > max){
-      max = temp;
-    }
-    if(temp<min){
-      min = temp;
-    }
-    x1 = x2;
-    y1 = y2;
-    a--;
+int main()
+{
+  int F,N;
+  cin >>F>>N;
+  int c[N],d[N];
+
+  d[0]=F;
+  for(int i=0;i<N;i++){
+    cin >> c[i];
   }
-  cout<<max<<" "<<min;
+  d[1]=c[0];
+  for(int i=2;i<N;i++){
+    d[i]=c[i-1];
+  }
+  for(int i=2;i<N;i++){
+    if(c[i-2]==c[i-1]&&c[i-1]==0){
+      d[i]=5;
+    }
+    else if(c[i-2]==c[i-1]&&c[i-1]==2){
+      d[i]=0;
+    }
+    else if(c[i-2]==c[i-1]&&c[i-1]==5){
+      d[i]=2;
+    }
+  }
+
+  for(int i=0;i<N;i++){
+    if(c[i]==0&&d[i]==5){
+      cout << d[i]<<" : Won at round "<< i+1 << endl;
+      break;
+    }
+    if(c[i]==2&&d[i]==0){
+      cout << d[i]<<" : Won at round "<< i+1 << endl;
+      break;
+    }
+    if(c[i]==5&&d[i]==2)
+    {
+      cout << d[i]<<" : Won at round "<< i+1 << endl;
+      break;
+    }
+    if(c[i]==5&&d[i]==0)
+    {
+      cout << d[i]<<" : Lost at round "<< i+1 << endl;
+      break;
+    }
+    if(c[i]==0&&d[i]==2)
+    {
+      cout << d[i]<<" : Lost at round "<< i+1 << endl;
+      break;
+    }
+    if(c[i]==2&&d[i]==5){
+      cout << d[i]<<" : Lost at round "<< i+1 << endl;
+      break;
+    }
+    cout << d[i] << " ";
+  }
+  if(d[N-1]==c[N-1]){
+    cout <<": Drew at round "<< N << endl;
+  }
+
+  return 0;
 }
