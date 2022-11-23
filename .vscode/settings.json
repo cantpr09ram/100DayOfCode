@@ -5,7 +5,10 @@
         "random": "cpp",
         "iostream": "cpp",
         "*.tcc": "cpp",
-        "ostream": "cpp"
+        "ostream": "cpp",
+        "future": "cpp",
+        "system_error": "cpp",
+        "regex": "cpp"
     },
     "C_Cpp.errorSquiggles": "Disabled"
 }

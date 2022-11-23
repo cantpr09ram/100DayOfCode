@@ -1,34 +1,29 @@
 #include <iostream>
 using namespace std;
-
 int main(){
-  int n, a[8], b[8];
-  cin >> n;
+  ios_base::sync_with_stdio(false);
+  cin.tie(0);
+  int x;
 
-  while (n--){
-    bool blown=true;
-
-    for (int i=1; i<=7; i++){
-      cin >> a[i];
+  while(cin>>x){
+    for(int i=0;i<x;i++){
+      int a, b, c, d;
+      cin>>a>>b>>c>>d;
+      //cout<<a<<b<<c<<d<<"\n";
+      if((a == 0)&&(b==1)&&(c==0)&&(d==1))
+        cout<<"A";
+      else if((a == 0)&&(b==1)&&(c==1)&&(d==1))
+        cout<<"B";
+      else if((a == 0)&&(b==0)&&(c==1)&&(d==0))
+        cout<<"C";
+      else if((a == 1)&&(b==1)&&(c==0)&&(d==1))
+        cout<<"D";
+      else if((a == 1)&&(b==0)&&(c==0)&&(d==0))
+        cout<<"E";
+      else if((a == 1)&&(b==1)&&(c==0)&&(d==0))
+        cout<<"F";
     }
-
-    for (int i=1; i<=7; i++){
-      cin >> b[i];
-    }
-    
-    if (a[2]==a[4] || a[2]!=a[6] || b[2]==b[4] || b[2]!=b[6]){
-      cout <<"A";
-      blown=false;
-    }
-    if (!a[7] || b[7]){
-      cout <<"B";
-      blown=false;
-    }
-    if (!(a[2]^b[2])+!(a[4]^b[4])+!(a[6]^b[6])){
-      cout <<"C";
-      blown=false;
-    }
-    cout << (blown ? "None\n" : "\n");
-}
-
+    cout<<"\n";
+  }
+  return 0;
 }
