@@ -3,27 +3,16 @@ using namespace std;
 int main(){
   ios_base::sync_with_stdio(false);
   cin.tie(0);
-  int x;
+  int x, y, z = 0, a, b, c, price = 0;
 
-  while(cin>>x){
-    for(int i=0;i<x;i++){
-      int a, b, c, d;
-      cin>>a>>b>>c>>d;
-      //cout<<a<<b<<c<<d<<"\n";
-      if((a == 0)&&(b==1)&&(c==0)&&(d==1))
-        cout<<"A";
-      else if((a == 0)&&(b==1)&&(c==1)&&(d==1))
-        cout<<"B";
-      else if((a == 0)&&(b==0)&&(c==1)&&(d==0))
-        cout<<"C";
-      else if((a == 1)&&(b==1)&&(c==0)&&(d==1))
-        cout<<"D";
-      else if((a == 1)&&(b==0)&&(c==0)&&(d==0))
-        cout<<"E";
-      else if((a == 1)&&(b==1)&&(c==0)&&(d==0))
-        cout<<"F";
+  cin>>x>>y;
+  for(int i=0;i<x;i++){
+    cin>>a>>b>>c;
+    if (max(a,max(b,c)) - min(a,min(b,c)) >= y){
+      price += (a+b+c)/3;
+      z++;
     }
-    cout<<"\n";
   }
+  cout<<z<<" "<<price;
   return 0;
 }
