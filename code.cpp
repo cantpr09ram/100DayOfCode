@@ -1,18 +1,35 @@
 #include <iostream>
+#include <algorithm>
 using namespace std;
 int main(){
   ios_base::sync_with_stdio(false);
   cin.tie(0);
-  int x, y, z = 0, a, b, c, price = 0;
-
-  cin>>x>>y;
-  for(int i=0;i<x;i++){
-    cin>>a>>b>>c;
-    if (max(a,max(b,c)) - min(a,min(b,c)) >= y){
-      price += (a+b+c)/3;
-      z++;
+  int a[20] = {0};
+  int b[20] = {0};
+  int m, n, ans = 0;
+  cin>>n>>m;
+  for(int i = 0;i<n;i++){
+    
+    for(int j = 0;j<m;j++){
+      cin>>a[j];
+    }
+    ans += *max_element(a , a + 20);
+    b[i] = *max_element(a , a + 20);
+  }
+  cout<<ans<<endl;
+  int x = 0;
+  for(int i =0; i<20;i++){
+    if((b[i] != 0)&&(ans % b[i] == 0)){
+      if(x == 0){
+        x = 1;
+        cout<<b[i];
+      }else if(x == 1){
+        cout<<" "<<b[i];
+      }
     }
   }
-  cout<<z<<" "<<price;
+  if(x == 0){
+    cout<<-1;
+  }
   return 0;
 }
