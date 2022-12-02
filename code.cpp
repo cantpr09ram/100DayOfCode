@@ -1,31 +1,27 @@
 #include<iostream>
 using namespace std;
-int main()
-{
-    int n,m,c1[100000],c2[100000],l,r,i,sum=0;
-    c1[0]=0;
-    c2[0]=0;    
-    while(cin>>n)                    
-    {
-        cin>>m;
-        for(i=1;i<=n;i++)
-        {
-            cin>>c1[i];
-            if(i>=2)
-            {
-                c2[1]=c1[1];  
-                c2[i]=c2[i-1]+c1[i];
+int main(){
+    ios_base::sync_with_stdio(false);
+    cin.tie(0);
+    int n, friends = 0, j, k, a[50000];
+    cin>>n;
+    for(int i=0;i<n;i++){
+        cin>>a[i];
+    }
+    for(int i = 0;i<n;i++){
+        if(a[i] != -1){
+            j = a[i];
+            while(true){
+                k = j;
+                j = a[j];
+                a[k] = -1;
+                if(j == i){
+                    break;
+                }
             }
+            friends++;
         }
-        for(i=1;i<=m;i++)    
-        {
-            while(cin>>l>>r)
-            {
-                cout<<c2[r]-c2[l-1]<<endl;
-            }
-        }
-    } 
+    }
+    cout<<friends;
     return 0;
 }
-
- 
