@@ -1,30 +1,21 @@
 #include<iostream>
+#include <algorithm>
 using namespace std;
 int main(){
     ios_base::sync_with_stdio(false);
     cin.tie(0);
-    int ans = 0, n;
-    int a[100];
-    cin>>n;
-    for(int i=0;i<n;i++){
-        cin>>a[i];
-    }
-    for(int i=0;i<n;i++){
-        if(a[i] == 0){
-            if(i == 0){
-                ans += a[1];
-            }else if(i == n-1){
-                ans += a[n-2];
-            }else{
-                if(a[i-1] > a[i+1]){
-                    ans += a[i+1];
-                }else{
-                    ans += a[i-1];
-                }
-            }
+    int a, b, c;
+    int num[9] = {0};
+    cin>>a>>b>>c;
+    num[a-1] += 1;
+    num[b-1] += 1;
+    num[c-1] += 1;
+    cout<<*max_element(num, num+9);
+    for(int i=8;i>=0;i--){
+        if(num[i] > 0){
+            cout<<" "<<i+1;
         }
     }
-    cout<<ans;
     return 0;
 }
-//g595
+//i399
