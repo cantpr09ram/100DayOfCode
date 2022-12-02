@@ -4,28 +4,21 @@ using namespace std;
 int main(){
     ios_base::sync_with_stdio(false);
     cin.tie(0);
-    int a, best = 0, worst = 0;
-    int num[20] = {0};
-    cin>>a;
-    for(int i =0;i<a;i++){
-        cin>>num[i];
+    int a[3] = {0};
+    for(int i=0;i<3;i++){
+        cin>>a[i];
     }
-    sort(num,num+20,greater<int>());
-    for(int i =0;i<a;i++){
-        if(a-i-1 == 20-a){
-            cout<<num[a-i-1];
-        }else{
-            cout<<num[a-i-1]<<" ";
-        }
+    sort(a,a+3);
+    for(int i=0;i<3;i++){
+        cout<<a[i]<<" ";
     }
     cout<<endl;
-    for(int i =0;i<a;i++){
-        if((num[a-i-1] > 60)&&(i>0)){
-            cout<<num[a-i]<<endl;
-            best = 1;
-        }
+    if(a[0]+a[1]<=a[2]){
+        cout<<"No";
+    }else{
+        if(a[0]*a[0]+a[1]*a[1] < a[2]*a[2]) cout<<"Obtuse";
+        else if(a[0]*a[0]+a[1]*a[1] >a[2]*a[2]) cout<<"Acute";
+        else if(a[0]*a[0]+a[1]*a[1] == a[2]*a[2]) cout<<"Right";
     }
-    if(best)
     return 0;
 }
-//i399
