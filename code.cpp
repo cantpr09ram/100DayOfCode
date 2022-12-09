@@ -3,33 +3,43 @@
 using namespace std;
 int main(){
     ios_base::sync_with_stdio(false);
-    cin.tie(0);
-    int n, m, a1[10000], a2[10000];
-    cin>>n>>m;
-    
-    for(int i = 0;i<n*2; i+=2){
-        
-        for(int j = 0;j<m;j++){
-            cin>>a1[j];
-        }
-        for(int j = 0;j<m;j++){
-            cin>>a2[j];
-        }
-        
-        int ans = 0;
-        int j1 = 0, j2 = 0;
-        while(j1 < m && j2 < m){
-            if (a1[j1] == a2[j2]){
-                j1++; j2++; ans++;
-                //cout<<i<<j1<<j2<<endl;
-            }else if(a1[j1] > a2[j2]){
-              j2++;
+    //cin.tie(0);
+    int a, b, c, d;
+    while(cin>>a>>b>>c>>d){
+        if(a!=d || b != c){
+            cout<<"Error"<<endl;
+            continue;
+        }else{
+            int a1[100][100], a2[100][100], temp = 0,ans[100][100] = {0};
+            //input 
+            for(int i = 0;i<b;i++){
+                for(int j = 0;j<a;j++){
+                    cin>>a1[i][j];
+                }
             }
-            else if(a1[j1] < a2[j2]){
-               j1++; 
-            } 
+            for(int i = 0;i<d;i++){
+                for(int j = 0;j<c;j++){
+                    cin>>a2[i][j];
+                }
+            }
+
+            //counting
+            for(int i = 0;i<a;i++){
+                for(int j = 0;j<d;j++){
+                    for(int k=0;k<b;k++){
+                        ans[i][j] += a1[k][i]*a2[i][j];
+                    }
+                }
+            }
+
+            //print
+            for(int i = 0;i<a;i++){
+                for(int j = 0;j<d;j++){
+                    cout<<ans[i][j]<<" ";
+                }
+                cout<<endl;
+            }
         }
-        cout<<ans<<endl;
     }
     return 0;
 }
