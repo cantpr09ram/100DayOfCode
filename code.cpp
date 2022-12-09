@@ -4,24 +4,39 @@ using namespace std;
 int main(){
     ios_base::sync_with_stdio(false);
     cin.tie(0);
-    int n, sum = 0, ans = 0, prefix, suffix;
-    int a1[1000000] = {0};
-    cin>>n;
-    for(int i=0;i<n;i++){
-        cin>>a1[i];
-    }
-    prefix = a1[0];
-    suffix = a1[n-1];
-    for (int i = 0,j = n-1;i < n && j >= 0;) {
-        if (prefix == suffix) {
-            ans += 1;
-            prefix += a1[++i];
-        } else if (prefix > suffix) {
-            suffix += a1[--j];
-        } else if (suffix > prefix) {
-            prefix += a1[++i];
+    int n, m, a1[10000], a2[10000];
+    cin>>n>>m;
+    
+    for(int i = 0;i<n*2; i+=2){
+        
+        for(int j = 0;j<m;j++){
+            cin>>a1[j];
         }
+        for(int j = 0;j<m;j++){
+            cin>>a2[j];
+        }
+        
+        int ans = 0;
+        int j1 = 0, j2 = 0;
+        while(j1 < m && j2 < m){
+            if (a1[j1] == a2[j2]){
+                j1++; j2++; ans++;
+                //cout<<i<<j1<<j2<<endl;
+            }else if(a1[j1] > a2[j2]){
+              j2++;
+            }
+            else if(a1[j1] < a2[j2]){
+               j1++; 
+            } 
+        }
+        cout<<ans<<endl;
     }
-    cout<<ans;
     return 0;
 }
+/*
+
+d596
+d481
+a694
+a417
+*/
