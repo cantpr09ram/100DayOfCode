@@ -1,43 +1,52 @@
 #include<iostream>
-#include <algorithm>
+#include <iomanip>
 using namespace std;
 int main(){
     ios_base::sync_with_stdio(false);
     cin.tie(0);
-    long long int a, b, c, d;
-    while(cin>>a>>b>>c>>d){
-        if(b != c){
-            cout<<"Error"<<endl;
-            continue;
-        }else{
-            long long int a1[100][100], a2[100][100], temp = 0,ans[100][100] = {0};
-            //input 
-            for(int i = 0;i<a;i++){
-                for(int j = 0;j<b;j++){
-                    cin>>a1[i][j];
-                }
-            }
-            for(int i = 0;i<c;i++){
-                for(int j = 0;j<d;j++){
-                    cin>>a2[i][j];
-                }
-            }
-            //counting
-            for(int i = 0;i<a;i++){
-                for(int j = 0;j<d;j++){
-                    for(int k=0;k<b;k++){
-                        ans[i][j] += a1[i][k]*a2[k][j];
-                    }
-                }
-            }
+    int t;
+    cin>>t;
+    for(int i = 0;i<t;i++){
+        int n,m;
+        cin>>n>>m;
+        int a[100][100];
+        int x = 0, y = 0, x1 = 0, y1 = 0, x2 = n-1, y2 = n-1, turn = 1;
 
-            //print
-            for(int i = 0;i<a;i++){
-                for(int j = 0;j<d;j++){
-                    cout<<ans[i][j]<<" ";
+        for(int j=0;j<n*n;j++){
+            a[x][y] = j+1;
+            if (turn == 1){
+                x++;
+                if(x==x2 && y == y1){
+                    turn = 2;
+                    y1++;
                 }
-                cout<<endl;
+            }else if (turn == 2){
+                y++;
+                if(x==x2 && y == y2){
+                    turn = 3;
+                    x2--;
+                }
+            }else if (turn == 3){
+                x--;
+                if(x==x1 && y == y2){
+                    turn = 4;
+                    y2--;
+                }
+            }else if (turn == 4){
+                y--;
+                if(x==x1 && y == y1){
+                    turn = 1;
+                    x1++;  
+                }
             }
+        }
+        //print
+        for(int j = 0;j<n;j++){
+            for(int k=0;k<n;k++){
+                if(m == 1) cout<<setw(5)<<a[k][j];
+                else cout<<setw(5)<<a[j][k];
+            }
+            cout<<endl;
         }
     }
     return 0;
