@@ -1,55 +1,48 @@
 #include<iostream>
-#include <iomanip>
 using namespace std;
 int main(){
     ios_base::sync_with_stdio(false);
     cin.tie(0);
     int t;
-    cin>>t;
-    for(int i = 0;i<t;i++){
-        int n,m;
-        cin>>n>>m;
-        int a[100][100];
-        int x = 0, y = 0, x1 = 0, y1 = 0, x2 = n-1, y2 = n-1, turn = 1;
+    string code;
+    char a[]={'A','B','C','D',
+        'E','F','G','H','I','J',
+        'K','L','M','N','O','P',
+        'Q','R','S','T','U','V',
+        'W','X','Y','Z'};
 
-        for(int j=0;j<n*n;j++){
-            a[x][y] = j+1;
-            if (turn == 1){
-                x++;
-                if(x==x2 && y == y1){
-                    turn = 2;
-                    y1++;
-                }
-            }else if (turn == 2){
-                y++;
-                if(x==x2 && y == y2){
-                    turn = 3;
-                    x2--;
-                }
-            }else if (turn == 3){
-                x--;
-                if(x==x1 && y == y2){
-                    turn = 4;
-                    y2--;
-                }
-            }else if (turn == 4){
-                y--;
-                if(x==x1 && y == y1){
-                    turn = 1;
-                    x1++;  
+    string b[]={".-","-...","-.-.",
+        "-..",".","..-.",
+        "--.","....","..",
+        ".---","-.-",".-..",
+        "--","-.","---",".--.",
+        "--.-",".-.","...","-",
+        "..-","...-",".--",
+        "-..-","-.--","--.."};
+
+    while(cin>>t){        
+        for(int i=0;i<t;i++){
+            getline(cin,code);
+            while(code.length() == 0)
+                getline(cin,code);
+            string alphabet;
+            for(int j=0;j<code.length();j++){
+                if(code[j] != ' '){
+                    alphabet += code[j];
+                }else if(code[j] == ' '){
+                    for(int k=0;k<26;k++){
+                        if(alphabet == b[k]) cout<<a[k];
+                    }
+                    alphabet = "";
                 }
             }
-        }
-        //print
-        for(int j = 0;j<n;j++){
-            for(int k=0;k<n;k++){
-                if(m == 1) cout<<setw(5)<<a[k][j];
-                else cout<<setw(5)<<a[j][k];
+            for(int k=0;k<26;k++){
+                        if(alphabet == b[k]) cout<<a[k];
             }
+            alphabet = "";
             cout<<endl;
         }
     }
-    return 0;
 }
 /*
 
