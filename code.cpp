@@ -1,41 +1,30 @@
-#include<iostream>
+#include <iostream>
 using namespace std;
-vector <int> v[10] = {{} , {2,4}, {1,3,5},{2,6},{1,5,7},{2,4,6,8},{3,5,9},{4,8},{5,7,9},{6,8}};
-/*
-    1 2 3
-    4 5 6
-    7 8 9
-*/
-int main(int argc, const char * argv[]) {
-    int t, ans[10] = {0};
-    cin >> t;
-    while (t--) {
-        int a,b,c;
-        cin >> a >> b >> c;
-        for (int i:v[a]) { // 當我的 i 在 v[a] 這個裡面的數字時，就 ans[i] = 1;
-            ans[i] = 1;
-        }
-        for (int i:v[b]) {
-            ans[i] = 0;
-        }
-        for (int i:v[c]) {
-            ans[i] = 0;
-        }
-        bool flag = false;
-        for (int i = 1;i < 10;i++) {
-            if (ans[i]) {
-                ans[i] = 0;
-                cout << i << " ";
-                flag = true;
+
+int main()
+{
+    ios_base::sync_with_stdio(false);
+    cin.tie(0);
+    int n, m;
+    while (cin >> n >> m){
+        int num[500][500];
+        for (int y=0; y<n; y++){
+            for (int x=0; x<n; x++){
+                cin >> num[y][x];
             }
         }
-        if (!flag) cout << "Empty";
-        cout << "\n"; 
+        int x1, x2, y1, y2;
+        for (int i=1; i<=m; i++){
+            cin >> x1 >> y1 >> x2 >> y2;
+            int sum=0;
+            for (int Y=y1-1; Y<y2; Y++){
+                for (int X=x1-1; X<x2; X++){
+                    sum += num[X][Y];
+                }
+            }
+            cout << sum << endl;
+        }
     }
-} 
-/*
 
-d596
-
-a694
-*/
+    return 0;
+}
