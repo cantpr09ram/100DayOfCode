@@ -37,7 +37,11 @@ int main(){
             else flip();
         }
         cout<<matrix.size()<<" "<<matrix[0].size()<<"\n";
-        for(vector<int> v:matrix) for(int i=0;i<v.size();i++) cout<<v[i]<<(" \n"[i==v.size()-1]);
+        for(vector<int> v:matrix){
+            for(int i=0;i<v.size();i++){
+                 cout<<v[i]<<(" \n"[i==v.size()-1]);
+            }
+        }               
     }
     return 0;
 }
