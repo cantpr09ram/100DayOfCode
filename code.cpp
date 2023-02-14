@@ -1,30 +1,43 @@
-#include <iostream>
+#include<iostream>
+#include<vector>
+#include<algorithm>
 using namespace std;
-
-int main()
-{
-    ios_base::sync_with_stdio(false);
-    cin.tie(0);
-    int n, m;
-    while (cin >> n >> m){
-        int num[500][500];
-        for (int y=0; y<n; y++){
-            for (int x=0; x<n; x++){
-                cin >> num[y][x];
-            }
-        }
-        int x1, x2, y1, y2;
-        for (int i=1; i<=m; i++){
-            cin >> x1 >> y1 >> x2 >> y2;
-            int sum=0;
-            for (int Y=y1-1; Y<y2; Y++){
-                for (int X=x1-1; X<x2; X++){
-                    sum += num[X][Y];
-                }
-            }
-            cout << sum << endl;
-        }
+vector<vector<int>>matrix;
+void flip(){reverse(matrix.begin(),matrix.end());}
+void rotate(){
+    vector<vector<int>>tmp;
+    for(int i=0;i<matrix[0].size();i++){
+        vector<int>combine;
+        for(int j=0;j<matrix.size();j++) combine.push_back(matrix[j][i]);
+        tmp.push_back(combine);
     }
-
+    matrix=tmp;
+    flip();
+}
+int main(){
+    int R,C,M;
+    while(cin>>R>>C>>M){
+        matrix.clear();
+        for(int i=0;i<R;i++){
+            vector<int>tmp;
+            for(int i=0;i<C;i++){
+                int x; cin>>x;
+                tmp.push_back(x);
+            }
+            matrix.push_back(tmp);
+        }
+        vector<bool>oper;
+        while(M--){
+            bool x; cin>>x;
+            oper.push_back(x);
+        }
+        reverse(oper.begin(),oper.end());
+        for(bool b:oper){
+            if(!b) rotate();
+            else flip();
+        }
+        cout<<matrix.size()<<" "<<matrix[0].size()<<"\n";
+        for(vector<int> v:matrix) for(int i=0;i<v.size();i++) cout<<v[i]<<(" \n"[i==v.size()-1]);
+    }
     return 0;
 }
