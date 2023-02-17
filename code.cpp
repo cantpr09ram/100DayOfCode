@@ -1,63 +1,49 @@
-#include <iostream>
-#include <vector>
-#include <set>
-#include <algorithm>
-#include <climits>
+#include<iostream>
 using namespace std;
-
-int main() {
-    int n, m;
-    cin >> n >> m;
-
-    vector<vector<int>> grid(n, vector<int>(m));
-    for (int i = 0; i < n; i++) {
-        for (int j = 0; j < m; j++) {
-            cin >> grid[i][j];
-        }
+int main(){
+    int s,t,n,m,r;
+    cin>>s>>t>>n>>m>>r;
+    int A[s][t];
+    int B[n][m];
+    int A_sum=0;
+    for(int i=0;i<s;i++){
+        for(int j=0;j<t;j++){
+            cin>>A[i][j];
+            A_sum+=A[i][j];
+        }   
     }
-
-    set<pair<int, int>> visited;
-    int x = 0, y = 0;
-    int min_val = INT_MAX;
-    for (int i = 0; i < n; i++) {
-        for (int j = 0; j < m; j++) {
-            if (grid[i][j] < min_val) {
-                min_val = grid[i][j];
-                x = i;
-                y = j;
-            }
-        }
+    for(int i=0;i<n;i++){
+        for(int j=0;j<m;j++){
+            cin>>B[i][j];
+        }   
     }
-
-    vector<pair<int, int>> directions = {{0, 1}, {0, -1}, {1, 0}, {-1, 0}};
-
-    int total = 0;
-    while (true) {
-        visited.insert({x, y});
-        total += grid[x][y];
-        int min_val = INT_MAX;
-        pair<int, int> min_pos;
-        for (auto& dir : directions) {
-            int new_x = x + dir.first;
-            int new_y = y + dir.second;
-            if (new_x >= 0 && new_x < n && new_y >= 0 && new_y < m && visited.count({new_x, new_y}) == 0) {
-                if (grid[new_x][new_y] < min_val) {
-                    min_val = grid[new_x][new_y];
-                    min_pos = {new_x, new_y};
+     
+    int total=0;
+    int minn=2000000;
+    for(int i=0;i<n-s+1;i++){
+        for(int j=0;j<m-t+1;j++){
+            int not_same=0;
+            int small_sum=0;
+            for(int y=0;y<s;y++){
+                for(int z=0;z<t;z++){
+                    if(B[y+i][z+j]!=A[y][z]){
+                        not_same++;
+                    }
+                    small_sum+=B[y+i][z+j];
                 }
             }
-        }
-        if (min_val == INT_MAX) {
-            break;
-        } else {
-            x = min_pos.first;
-            y = min_pos.second;
-        }
+             
+            if(not_same<=r){
+                total++;
+                int diff=abs(small_sum-A_sum);
+                if(diff<minn){
+                    minn=diff;
+                }
+            }
+        }   
     }
-
-    cout << total << endl;
-
+    cout<<total<<endl;
+    if(total==0)cout<<-1<<endl;
+    else cout<<minn<<endl;
     return 0;
-}
-
-
+} 
