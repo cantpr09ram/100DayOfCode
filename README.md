@@ -3,4 +3,6 @@
 [problem](https://docs.google.com/spreadsheets/d/1m3PsJACKsJfFxSsRz2xE5zsaqTc6iBwp6l2Ml0tokBc/edit#gid=1468689738)
 
 	
-* g276
+* g596
+* j123
+* f313
