@@ -8,7 +8,8 @@
         "ostream": "cpp",
         "future": "cpp",
         "system_error": "cpp",
-        "regex": "cpp"
+        "regex": "cpp",
+        "chrono": "cpp"
     },
     "C_Cpp.errorSquiggles": "Disabled"
 }

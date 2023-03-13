@@ -1,64 +1,55 @@
-#include <iostream>
-#include <vector>
+#include<iostream>
+#include<vector> //vector 
+#include<algorithm> //max() 
 using namespace std;
-
-int main(void){
-    int r, c, k, m;
-    vector <vector <int>> map;
-    int dir[4][2] = {{0,-1},{-1,0},{0,1},{1,0}};//down, left, top, right
-    cin>>r>>c>>k>>m;
-
-    for(int i=0;i<r;i++) {
-        vector<int> temp;
-        for(int j=0;j<c;j++){
-            int x;
-            cin>>x;
-            temp.push_back(x);
-        }
-        map.push_back(temp);
-    }
-
-    for(int w=0;w<m;w++){
-        int val [55][55] = {0};
-        for(int i=0;i<r;i++) {
-            for(int j=0;j<c;j++){
-                // start moving!
-                if(map[i][j] != -1) {
-                    int out = map[i][j]/k;
-                    for(int s=0;s<4;s++) {
-                        int x = i+dir[s][0], y = j+dir[s][1]; 
-                        if(x>=0 && x<r && y>=0 && y<c && map[x][y]!=-1) {
-                            //cout<<i<<j<<endl;
-                            val[x][y] += out;
-                            val[i][j] -= out;
-                        }
-                    }
-                }
+int main(){
+    int k; 
+    cin>>k;
+    string s; 
+    cin>>s;
+    vector<int>times;
+    bool last_is_lower=false;
+    int cnt=0;
+    for(char c:s){
+        if(last_is_lower == false){
+            if(isupper(c)) cnt++;
+            else{
+                times.push_back(cnt);
+                cnt=1;
+                last_is_lower=true;
             }
         }
-        for(int i=0;i<r;i++) {
-            for(int j=0;j<c;j++){
-                map[i][j] += val[i][j];
+        else if(last_is_lower){
+            if(islower(c)) cnt++;
+            else{
+                times.push_back(cnt);
+                cnt=1;
+                last_is_lower=false;
             }
         }
-    }
-    /*
-    for(int i=0;i<r;i++) {
-        for(int j=0;j<c;j++){
-          cout<<map[i][j]<<" ";
-        }
-        cout<<endl;
-    }
-    */
-    int max_people=0, min_people=1e9;
-    for(int i=0;i<r;i++) {
-        for(int j=0;j<c;j++){
-            if(map[i][j]==-1) continue;
-            max_people = max(max_people,map[i][j]);
-            min_people = min(min_people,map[i][j]);
+        else{
+            if(isupper(c)) continue;
+            else last_is_lower=true;
+            cnt++;
         }
     }
-    cout<<min_people<<endl;
-    cout<<max_people;
+    if(cnt) times.push_back(cnt);
+     
+    int max_length=0,cur_length=0;
+    for(int i:times){
+        if(i==k) cur_length+=k;
+        else if(i<k){
+            max_length=max(max_length,cur_length);
+            cur_length=0;
+        }
+        else{
+            cur_length+=k;
+            max_length=max(max_length,cur_length);
+            cur_length=k;
+        }
+    }
+    max_length=max(max_length,cur_length);
+     
+    cout<<max_length<<"\n";
     return 0;
 }
