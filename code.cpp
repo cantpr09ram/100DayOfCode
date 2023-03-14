@@ -1,55 +1,58 @@
 #include<iostream>
-#include<vector> //vector 
-#include<algorithm> //max() 
+#define int long long
 using namespace std;
-int main(){
-    int k; 
-    cin>>k;
-    string s; 
+string s;
+int now=0;
+int char2num(){
+    //把char變int
+    int ans=0;
+    while(now<s.size()&&'0'<=s[now]&&s[now]<='9'){//進位
+        ans=ans*10+s[now]-'0';
+        now++;
+    }
+    return ans;
+}
+int cal(bool cmp);
+int f();
+signed main(){
     cin>>s;
-    vector<int>times;
-    bool last_is_lower=false;
-    int cnt=0;
-    for(char c:s){
-        if(last_is_lower == false){
-            if(isupper(c)) cnt++;
-            else{
-                times.push_back(cnt);
-                cnt=1;
-                last_is_lower=true;
-            }
-        }
-        else if(last_is_lower){
-            if(islower(c)) cnt++;
-            else{
-                times.push_back(cnt);
-                cnt=1;
-                last_is_lower=false;
-            }
-        }
-        else{
-            if(isupper(c)) continue;
-            else last_is_lower=true;
-            cnt++;
-        }
+    cout<<cal(0);
+}
+int f(){
+    now+=2;
+    int mx=cal(0),mn=mx;
+    while(s[now]!=')'){
+        now++;
+        int tmp=cal(0);
+        mx=max(mx,tmp);
+        mn=min(mn,tmp);
+
     }
-    if(cnt) times.push_back(cnt);
-     
-    int max_length=0,cur_length=0;
-    for(int i:times){
-        if(i==k) cur_length+=k;
-        else if(i<k){
-            max_length=max(max_length,cur_length);
-            cur_length=0;
+now++;
+    return mx-mn;
+}
+int cal(bool cmp){
+    int n;
+    if('0'<=s[now]&&s[now]<='9')n=char2num();
+    else n=f();
+    if(cmp||s[now]==','||s[now]==')')return n;
+    while(now<s.size()){
+        if(s[now]=='+'){
+            now++;
+            int b=cal(1);
+            n+=b;
         }
-        else{
-            cur_length+=k;
-            max_length=max(max_length,cur_length);
-            cur_length=k;
+        else if(s[now]=='-'){
+            now++;
+            int b=cal(1);
+            n-=b;
         }
+        else if(s[now]=='*'){
+            now++;
+            int b=cal(0);
+            n*=b;
+        }
+        if(s[now]==','||s[now]==')')return n;
     }
-    max_length=max(max_length,cur_length);
-     
-    cout<<max_length<<"\n";
-    return 0;
+    return n;
 }
