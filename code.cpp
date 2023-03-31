@@ -14,24 +14,15 @@ int main(){
     for(int i=0;i<q;i++){
         for(int j=0;j<k;j++) {
             int x; cin >> x;
-            ans[i+1][j] = ans[i][x-1];
-            cout<<ans[i][x-1]<<" "<<ans[i+1][j]<<" "<<x;
+            ans[i+1][x-1] = ans[i][j];
         }
-        cout<<endl;
     }
 
-    for(int i=0;i<q;i++){
-        for(int j=0;j<k;j++) {
-            cout<<ans[i+1][j];
-        }
-        cout<<endl;
-    }
-    /*
-    for(int i=1;i<=r;i++){
-        for(int j=0;j<q;j++) {
+    for(int i=0;i<r;i++){
+        for(int j=1;j<=q;j++) {
             cout<<ans[j][i];
         }
         cout<<endl;
-    }*/
+    }
     return 0;
 }
