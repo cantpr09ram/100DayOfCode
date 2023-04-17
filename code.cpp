@@ -1,28 +1,25 @@
 #include<iostream>
-#include<vector>
 using namespace std;
 int main(){
-    int k,q,r;
-    cin>>k>>q>>r;
-    string step;
-    char ans[25][26];
-    for(int i=0;i<k;i++){
-        cin>>ans[0][i];
-    }
-    
-    
-    for(int i=0;i<q;i++){
-        for(int j=0;j<k;j++) {
-            int x; cin >> x;
-            ans[i+1][x-1] = ans[i][j];
-        }
-    }
+    int s,e,a;
+    int day=0;
+    cin>>s>>e>>a;
+    while(s<e && a) {
+        ++day;
+        if(day %10 ==0) a--;
 
-    for(int i=0;i<r;i++){
-        for(int j=1;j<=q;j++) {
-            cout<<ans[j][i];
+        if ((day-1)%10 >= 8){
+            continue;
+        }else if ((day-1)%3 == 2){
+            s += s/3;
+        }else{
+            s += s/10;
         }
-        cout<<endl;
+    }
+    if(s >= e){
+        cout<<day+1;
+    }else{
+        cout<<"unsalable";
     }
     return 0;
 }
