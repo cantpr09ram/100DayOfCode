@@ -1,25 +1,16 @@
 #include<iostream>
+#include<algorithm>
 using namespace std;
 int main(){
-    int s,e,a;
-    int day=0;
-    cin>>s>>e>>a;
-    while(s<e && a) {
-        ++day;
-        if(day %10 ==0) a--;
+    int m, n, d;
+    cin>>m>>n>>d;
 
-        if ((day-1)%10 >= 8){
-            continue;
-        }else if ((day-1)%3 == 2){
-            s += s/3;
-        }else{
-            s += s/10;
-        }
+    bool f = false;
+    for(int i=0; i<d/n +1; i++){
+        if((d - n*i)%m == 0) f = true;
     }
-    if(s >= e){
-        cout<<day+1;
-    }else{
-        cout<<"unsalable";
-    }
-    return 0;
+
+    if(f) cout<<"YES";
+    else cout<<"NO";
+
 }
