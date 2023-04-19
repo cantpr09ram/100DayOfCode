@@ -1,16 +1,20 @@
 #include<iostream>
-#include<algorithm>
+#include<cmath>
 using namespace std;
 int main(){
-    int m, n, d;
-    cin>>m>>n>>d;
-
-    bool f = false;
-    for(int i=0; i<d/n +1; i++){
-        if((d - n*i)%m == 0) f = true;
+    long long int x, y, ans_x, ans_y, a, b, n;
+    double ans = 2500000000000;
+    cin>>x>>y;
+    cin>>n;
+    for(int i=0;i<n;i++){
+        cin>>a>>b;
+        //cout<<sqrt(pow(x-a,2)+pow(y-b,2))<<endl;
+        if(ans > sqrt((x-a)*(x-a)+(y-b)*(y-b))){
+            ans = sqrt((x-a)*(x-a)+(y-b)*(y-b));
+            ans_x = a; 
+            ans_y = b;
+        }
     }
-
-    if(f) cout<<"YES";
-    else cout<<"NO";
-
+    cout<<ans_x<<" "<<ans_y;
+    return 0;
 }
