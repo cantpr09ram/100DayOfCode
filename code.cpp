@@ -1,5 +1,5 @@
 #include<iostream>
-#include<cmath>
+#include<string>
 using namespace std;
 int main(){
     int n, m, k, i = 0;
@@ -17,14 +17,7 @@ int main(){
         }else{
             break;
         }
-        
-        if(n>1){
-            cout<<i<<": Wayne "<<(k ?"eats an Apple pie":"drinks a Corn soup")<<", and now he has "<<n<<" dollars."<<endl;
-        }else if(n == 1){
-            cout<<i<<": Wayne "<<(k ?"eats an Apple pie":"drinks a Corn soup")<<", and now he has "<<n<<" dollar."<<endl;
-        }else{
-            cout<<i<<": Wayne "<<(k ?"eats an Apple pie":"drinks a Corn soup")<<", and now he doesn't have money."<<endl;
-        }
+        cout<<i<<": Wayne "<<(k ?"eats an Apple pie":"drinks a Corn soup")<<", and now he "<<(n>0 ? "has "+to_string(n)+(n>1 ? " dollars.":" dollar.") : "doesn't have money.")<<endl;
         i += m;
     }
     }
