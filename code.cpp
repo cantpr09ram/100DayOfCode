@@ -2,19 +2,38 @@
 #include<cmath>
 using namespace std;
 int main(){
-    long long int x, y, ans_x, ans_y, a, b, n;
-    double ans = 2500000000000;
-    cin>>x>>y;
-    cin>>n;
-    for(int i=0;i<n;i++){
-        cin>>a>>b;
-        //cout<<sqrt(pow(x-a,2)+pow(y-b,2))<<endl;
-        if(ans > sqrt((x-a)*(x-a)+(y-b)*(y-b))){
-            ans = sqrt((x-a)*(x-a)+(y-b)*(y-b));
-            ans_x = a; 
-            ans_y = b;
+    int n, m, k, i = 0;
+    cin>>n>>m>>k;
+    if((k == 0 && n<32)||(k==1 && n<55)){
+        cout<<"Wayne can't eat and drink.";
+    }else{
+        while(n > 0){
+        if(k == 0 && n-32 >= 0){
+            n -= 32;
+            k = 1;
+            if(n>1){
+                cout<<i<<": Wayne eats an Apple pie, and now he has "<<n<<" dollars."<<endl;
+            }else if(n == 1){
+                cout<<i<<": Wayne eats an Apple pie, and now he has "<<n<<" dollar."<<endl;
+            }else{
+                cout<<i<<": Wayne eats an Apple pie, and now he doesn't have money."<<endl;
+            }
+        }else if(k == 1 && n-55 >= 0){
+            n -= 55;
+            k = 0;
+            if(n>1){
+                cout<<i<<": Wayne drinks a Corn soup, and now he has "<<n<<" dollars."<<endl;
+            }else if(n == 1){
+                cout<<i<<": Wayne drinks a Corn soup, and now he has "<<n<<" dollar."<<endl;
+            }else{
+                cout<<i<<": Wayne drinks a Corn soup, and now he doesn't have money."<<endl;
+            }
+            
+        }else{
+            break;
         }
+        i += m;
     }
-    cout<<ans_x<<" "<<ans_y;
+    }
     return 0;
 }
