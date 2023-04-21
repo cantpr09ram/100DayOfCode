@@ -1,25 +1,26 @@
 #include<iostream>
-#include<string>
 using namespace std;
 int main(){
-    int n, m, k, i = 0;
-    cin>>n>>m>>k;
-    if((k == 0 && n<32)||(k==1 && n<55)){
-        cout<<"Wayne can't eat and drink.";
-    }else{
-        while(n > 0){
-        if(k == 0 && n-32 >= 0){
-            n -= 32;
-            k = 1;
-        }else if(k == 1 && n-55 >= 0){
-            n -= 55;
-            k = 0;
-        }else{
-            break;
+    int k, w, s, e, price = 0;
+    cin>>k>>w>>s>>e;
+    if(k > 2) price += 20 + (k-2)*5;
+    else price += 20;
+
+    price += w/2 * 5;
+
+    for(int i=s; i<=e; i++){
+        if(i==18 && e>=19){
+            price += 185;
+        }else if(i==19 && e>=20){
+            price += 195;
+        }else if(i==20 && e>=21){
+            price += 205;
+        }else if(i==21 && e>=22){
+            price += 215;
+        }else if(i==22 && e>=23){
+            price += 225;
         }
-        cout<<i<<": Wayne "<<(k ?"eats an Apple pie":"drinks a Corn soup")<<", and now he "<<(n>0 ? "has "+to_string(n)+(n>1 ? " dollars.":" dollar.") : "doesn't have money.")<<endl;
-        i += m;
     }
-    }
+    cout<<price;
     return 0;
 }
