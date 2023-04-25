@@ -1,9 +1,13 @@
 #include<iostream>
 using namespace std;
 int main(){
-    int n;
-    while(cin>>n){
-        cout<<1+n*(n-1)/2<<endl;
-    }
+    int n, current=1, next=3, temp;
+    cin>>n;
+        for(int i=1; i<n; i++){
+            temp = current;
+            current = next;
+            next += temp;
+        }
+        cout<<current;
     return 0;
 }
