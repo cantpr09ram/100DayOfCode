@@ -1,13 +1,16 @@
 #include<iostream>
 using namespace std;
 int main(){
-    int n, current=1, next=3, temp;
-    cin>>n;
-        for(int i=1; i<n; i++){
-            temp = current;
-            current = next;
-            next += temp;
+    int a[3], b[3], ans = 1;
+    for(int i=0;i<3;i++){
+        cin>>a[i]>>b[i];
+    }
+    while(true){
+        if(ans%a[0]==b[0] && ans%a[1]==b[1] && ans%a[2]==b[2]){
+            break;
+        }else{
+            ans++;
         }
-        cout<<current;
-    return 0;
+    }
+    cout<<ans;
 }
