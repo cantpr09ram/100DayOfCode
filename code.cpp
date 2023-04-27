@@ -1,16 +1,26 @@
 #include<iostream>
 using namespace std;
 int main(){
-    int a[3], b[3], ans = 1;
-    for(int i=0;i<3;i++){
-        cin>>a[i]>>b[i];
-    }
-    while(true){
-        if(ans%a[0]==b[0] && ans%a[1]==b[1] && ans%a[2]==b[2]){
-            break;
-        }else{
-            ans++;
+   int n, s, m;
+   cin>>n>>s;
+   int ans[n], shell[n];
+   for(int i=0; i<n;i++){
+        cin>>ans[i];
+   }
+   
+   cin>>m;
+   for(int i=0; i<m; i++){
+        for(int j=0; j<n; j++){
+            cin>>shell[j];
         }
-    }
-    cout<<ans;
+
+        int score = 0;
+        for(int j=0; j<n; j++){
+            if(ans[j] == shell[j]){
+                score += s;
+            }
+        }
+        cout<<score<<endl;
+   }
+   return 0;
 }
