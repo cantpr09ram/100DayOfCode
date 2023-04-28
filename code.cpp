@@ -2,16 +2,15 @@
 #include<cmath>
 using namespace std;
 int main(){
-    double x0, y0, l0, r, ans = 0;
-    cin>>x0>>y0>>l0>>r;
-    int n;
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    int n, ans = 2;
     cin>>n;
-    for(int i=0; i<n;i++){
-        double xi, yi, li, d;
-        cin>>xi>>yi>>li;
-        d = sqrt(pow(x0-xi, 2)+pow(y0-yi, 2));
-        if(d<=r and li<=l0) ans++;
+    for(int i=2; i<sqrt(n); i++){
+        if(n%i == 0 && i>ans){
+            ans = i;
+        }
     }
-    cout<<ans;
+    cout<<n/ans;
     return 0;
 }
