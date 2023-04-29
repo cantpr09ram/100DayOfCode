@@ -2,15 +2,36 @@
 #include<cmath>
 using namespace std;
 int main(){
-    ios::sync_with_stdio(0);
-    cin.tie(0);
-    int n, ans = 2;
-    cin>>n;
-    for(int i=2; i<sqrt(n); i++){
-        if(n%i == 0 && i>ans){
-            ans = i;
+    long long int a, b, c, ans=0;
+    long long int num[5], money[5];
+    bool isThree = false;
+    cin>>a>>b>>c;
+    for(int i=0; i<5;i++){
+        cin>>num[i];
+    }
+    for(int i=0; i<5;i++){
+        cin>>money[i];
+    }
+
+    for(int i=0; i<5;i++){
+        if(num[i] == a) ans += money[i];
+    }
+    for(int i=0; i<5;i++){
+        if(num[i] == b) ans += money[i];
+    }
+    for(int i=0; i<5;i++){
+        if(num[i] == c) {
+            ans -= money[i];
+            isThree = true;
         }
     }
-    cout<<n/ans;
+    if(!isThree){
+        ans *= 2;
+    }
+    if(ans < 0){
+        cout<<0;
+    }else{
+        cout<<ans;
+    }
     return 0;
 }
