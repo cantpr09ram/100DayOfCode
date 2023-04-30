@@ -2,36 +2,22 @@
 #include<cmath>
 using namespace std;
 int main(){
-    long long int a, b, c, ans=0;
-    long long int num[5], money[5];
-    bool isThree = false;
-    cin>>a>>b>>c;
-    for(int i=0; i<5;i++){
-        cin>>num[i];
+    int n, ans=1000001, min_wight, min_hight;
+    cin>>n;
+    long long int wight[n], hight[n];
+    for(int i=0;i<n;i++){
+        cin>>hight[i];
     }
-    for(int i=0; i<5;i++){
-        cin>>money[i];
+    for(int i=0;i<n;i++){
+        cin>>wight[i];
     }
-
-    for(int i=0; i<5;i++){
-        if(num[i] == a) ans += money[i];
-    }
-    for(int i=0; i<5;i++){
-        if(num[i] == b) ans += money[i];
-    }
-    for(int i=0; i<5;i++){
-        if(num[i] == c) {
-            ans -= money[i];
-            isThree = true;
+    for(int i=0;i<n;i++){
+        if(wight[i]*hight[i] <= ans){
+            ans = wight[i]*hight[i];
+            min_hight = hight[i];
+            min_wight = wight[i];
         }
     }
-    if(!isThree){
-        ans *= 2;
-    }
-    if(ans < 0){
-        cout<<0;
-    }else{
-        cout<<ans;
-    }
+    cout<<min_hight<<" "<<min_wight;
     return 0;
 }
