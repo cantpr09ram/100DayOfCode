@@ -1,32 +1,19 @@
 #include<iostream>
-#include<stack>
-#include<string>
 using namespace std;
 int main(){
-    string word, mid;
-    int num = 0;
-    stack <char> front, back;
-    cin>>word;
-    cin>>mid;
-    num = word.find(mid);
-    for(int i=num + mid.length(); i<word.length();i++){
-        back.push(word[i]);
+    int arr[47] = {0};
+    int num;
+    cin>>num;
+    for(int i=0; i<=num+1; i++){
+        if(i == 0){
+            arr[0] = 0;
+        }else if (i == 1){
+            arr[1] = 1;
+        }else{
+            arr[i] = arr[i - 1] + arr[i - 2];
+        }
+        
     }
-
-    for(int i=0; i<num;i++){
-        front.push(word[i]);
-    }
-    
-    while(! back.empty()){
-        char &tmp = back.top();
-        cout<<tmp;
-        back.pop();
-    }
-    cout<<mid;
-    while(! front.empty()){
-        char &tmp = front.top();
-        cout<<tmp;
-        front.pop();
-    }
+    cout<<arr[num]<<":"<<arr[num+1];
     return 0;
 }
