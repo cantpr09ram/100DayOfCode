@@ -11,10 +11,11 @@ int main() {
     while (cin >> A >> B >> L) {
         double mini = 100000.0;
         for (A1 = 1; A1 <= L; A1++) {
-            for (B1 = 1; B1 <= L; B1++) {
+            for (B1 = 1; B1 <= L; B1++) { // A2, B2小於L
                 r0 = (double)A / (double)B;
                 r1 = (double)A1 / (double)B1;
                 if (__gcd(A1, B1)!=1 || r1 < r0) continue;
+                //是不是互質 OR 差是不是有變小
                 if (r1 - r0 < mini) {
                     mini = r1 - r0;
                     A2 = A1;
