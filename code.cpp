@@ -2,17 +2,19 @@
 #include <cmath>
 using namespace std;
 int main() {
-    int n, a, b, c, d;
-    cin>>n;
-    for(int i=0; i<n;i++){
-        cin>>a>>b>>c;
-        d = b*b - 4*a*c ;
-        if(d >=0 && (int) sqrt(d)*sqrt(d) == d){
-            cout<<"Yes"<<endl;
-        }else{
-            cout<<"No"<<endl;
+    int n, t;
+    while(cin>>n){
+        t = 0;
+        while(n>1){
+            if(n%2 == 0){
+                n /= 2;
+                t++;
+            }else if (n%2 == 1){
+                n = n*3 +1;
+                t++;
+            }
         }
-        
+        cout<<t<<endl;
     }
     return 0;
 }
