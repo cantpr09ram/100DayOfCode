@@ -1,13 +1,18 @@
 #include <iostream>
+#include <cmath>
 using namespace std;
 int main() {
-    cout.sync_with_stdio(false);
-    cin.tie(0);
-    long long a, b;
-    for(a =1; a<100000;a++){
-        b = a/2 +1;
-        //cout<<b<<" ";
-        cout<<(b+1)*b/2<<"\n";
+    int n, a, b, c, d;
+    cin>>n;
+    for(int i=0; i<n;i++){
+        cin>>a>>b>>c;
+        d = b*b - 4*a*c ;
+        if(d >=0 && (int) sqrt(d)*sqrt(d) == d){
+            cout<<"Yes"<<endl;
+        }else{
+            cout<<"No"<<endl;
+        }
+        
     }
     return 0;
 }
