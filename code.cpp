@@ -1,25 +1,34 @@
 #include <iostream>
-#include <iomanip>
+#include <algorithm>
+#include <vector>
 using namespace std;
+int cmp(pair<int, int>a, pair<int, int>b){
+    if(a.first == b.first){
+        return a.second < b.second;
+    }else{
+        return a.first > b.first;
+    }
+}
 int main() {
     ios::sync_with_stdio(0);
     cin.tie(0);
-    int min, hour, time, station, total, p, n;
-    cin>>station;
-    cin>>hour>>min;
-    pair<int, int> t[station+1];
-    t[0].first = hour;
-    t[0].second = min;
-    total = hour*60+min;
-    for(int i=1; i<=station;i++){
-        cin>>n;
-        total += n;
-        t[i].first = (total/60)%24;
-        t[i].second = total%60;
+    string n;
+    int num[10] = {0};
+    vector <pair<int, int>> ans;
+    cin>>n;
+    for(int i=0;i<n.length();i++){
+        num[n[i]-'0'] += 1;
     }
 
-    while(cin>>p && p){
-        cout<<setfill('0')<< setw(2)<<t[p].first<<':'<< setw(2)<<t[p].second<<'\n';
+    for(int i=0; i<=9;i++){
+        ans.push_back(make_pair(num[i], i));
+    }
+    sort(ans.begin(), ans.end(), cmp);
+
+    for(int i=0; i<=9;i++){
+        if(ans[i].first >0){
+            cout<<ans[i].second<<" ";
+        }
     }
     return 0;
 }
