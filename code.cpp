@@ -1,20 +1,25 @@
 #include <iostream>
-#include <cmath>
+#include <iomanip>
 using namespace std;
 int main() {
-    int n, t;
-    while(cin>>n){
-        t = 0;
-        while(n>1){
-            if(n%2 == 0){
-                n /= 2;
-                t++;
-            }else if (n%2 == 1){
-                n = n*3 +1;
-                t++;
-            }
-        }
-        cout<<t<<endl;
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    int min, hour, time, station, total, p, n;
+    cin>>station;
+    cin>>hour>>min;
+    pair<int, int> t[station+1];
+    t[0].first = hour;
+    t[0].second = min;
+    total = hour*60+min;
+    for(int i=1; i<=station;i++){
+        cin>>n;
+        total += n;
+        t[i].first = (total/60)%24;
+        t[i].second = total%60;
+    }
+
+    while(cin>>p && p){
+        cout<<setfill('0')<< setw(2)<<t[p].first<<':'<< setw(2)<<t[p].second<<'\n';
     }
     return 0;
 }
