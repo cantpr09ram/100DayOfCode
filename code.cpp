@@ -1,33 +1,45 @@
 #include <iostream>
-#include <algorithm>
-#include <vector>
 using namespace std;
-int cmp(pair<int, int>a, pair<int, int>b){
-    if(a.first == b.first){
-        return a.second < b.second;
-    }else{
-        return a.first > b.first;
-    }
-}
 int main() {
     ios::sync_with_stdio(0);
     cin.tie(0);
+    int p[3];
     string n;
-    int num[10] = {0};
-    vector <pair<int, int>> ans;
+    cin>>p[0]>>p[1]>>p[2];
     cin>>n;
-    for(int i=0;i<n.length();i++){
-        num[n[i]-'0'] += 1;
-    }
-
-    for(int i=0; i<=9;i++){
-        ans.push_back(make_pair(num[i], i));
-    }
-    sort(ans.begin(), ans.end(), cmp);
-
-    for(int i=0; i<=9;i++){
-        if(ans[i].first >0){
-            cout<<ans[i].second<<" ";
+    for(int i=0;i<n.size();i++){
+        if(p[i] != '-'){
+            cout<<n[i];
+        }else if (n[i-1] >= n[i+1]){
+            cout<<n[i];
+        }else if (n[i-1]+1 == n[i+1]){
+            continue;
+        }else{
+            if(p[2] == '1'){
+                for(int j=p[i-1]+1;j<p[i+1];i++){
+                    for(int k=0;k<p[1];k++){
+                        if(p[0] == 1){
+                            cout<<(char)j;
+                        }else if(p[0] == 2){
+                            cout<<(char)j-26;
+                        }else{
+                            cout<<'*';
+                        }
+                    }
+                }
+            }else{
+                for(int j=p[i+1]+1;j>p[i+1];i--){
+                    for(int k=0;k<p[1];k++){
+                        if(p[0] == 1){
+                            cout<<(char)j;
+                        }else if(p[0] == 2){
+                            cout<<(char)j-26;
+                        }else{
+                            cout<<'*';
+                        }
+                    }
+                }
+            }
         }
     }
     return 0;
