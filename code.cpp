@@ -3,25 +3,24 @@
 #include <algorithm>
 using namespace std;
 int main() {
+    //-------
     ios::sync_with_stdio(0);
     cin.tie(0);
-    int money = 0, book, day,n;
+    //-------
+    int n, ans=0, tmp;
+    vector <int> mountain;
     cin>>n;
-    vector <int>book_list;
-    for(int i=0;i<n;i++){
-        cin>>book>>day;
-        if(day>100){
-            book_list.push_back(book);
-            money += (day-100)*5; 
+    for (int i=0;i<n;i++) {
+        cin>>tmp;
+        if(mountain.empty() || tmp!=mountain[mountain.size()-1]){
+            mountain.push_back(tmp);
         }
     }
-    sort(book_list.begin(), book_list.end());
-
-    for (auto it = book_list.begin(); it != book_list.end(); ++it) {
-        cout << *it << " ";
+    for (int i=1; i<mountain.size()-1;i++) {
+        if(mountain[i-1]<mountain[i] && mountain[i]>mountain[i+1]){
+            ans++;
+        }
     }
-
-    cout<<endl<<money;
-
+    cout<<ans;
     return 0;
 }
