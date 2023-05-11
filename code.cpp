@@ -1,28 +1,29 @@
 #include <iostream>
-#include <vector>
-#include <algorithm>
-#include <cmath>
 using namespace std;
-int main() {
+
+int main(void) {
+     int r, c, t;
     //-------
     ios::sync_with_stdio(0);
     cin.tie(0);
     //-------
-    int a;
-    cin >> a ;
-    int b[a][a],c[4][a/2][a/2],d[4];
-    for(int i=0;i<a;i++){
-        for(int j=0;j<a;j++){
-            cin >> b[i][j] ;
+    cin>>r>>c>>t;
+    int seat[r][c] = {0};
+    int rshift = (t-1)/2;
+    int cshift = t/2;
+    int id = 0;
+    for (int i = 0; i <r; i++){
+        for (int j= 0; j <c; j++){
+            seat[(i+rshift)%r][(j+cshift)%c] = ++id;
         }
     }
+    
 
-    for(int i=1;i<a;i+=2){
-        for(int j=1;j<a;j+=2){
-            cout << max(b[i][j],max(b[i-1][j],max(b[i-1][j-1],b[i][j-1]))) << ' ' ;
+    for (int i = 0; i < r; i++){
+        for (int j= 0; j < c; j++){
+            cout<<seat[i][j]<<" ";
         }
-        cout << endl ;
+        cout<<endl;
     }
-
     return 0;
 }
