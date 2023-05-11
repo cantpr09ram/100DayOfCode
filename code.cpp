@@ -2,26 +2,31 @@
 using namespace std;
 
 int main(void) {
-     int r, c, t;
+    int r, c;
     //-------
     ios::sync_with_stdio(0);
     cin.tie(0);
     //-------
-    cin>>r>>c>>t;
-    int seat[r][c] = {0};
-    int rshift = (t-1)/2;
-    int cshift = t/2;
-    int id = 0;
-    for (int i = 0; i <r; i++){
-        for (int j= 0; j <c; j++){
-            seat[(i+rshift)%r][(j+cshift)%c] = ++id;
+    cin>>r>>c;
+    int a[r][c] = {0}, b[r][c] = {0};
+    for(int i=0;i<r;i++){
+        for(int j=0; j<c;j++){
+            cin>>a[i][j];
+        }
+    }
+    for(int i=0;i<r;i++){
+        for(int j=0; j<c;j++){
+            cin>>b[i][j];
         }
     }
     
-
-    for (int i = 0; i < r; i++){
-        for (int j= 0; j < c; j++){
-            cout<<seat[i][j]<<" ";
+    for(int i=0;i<r;i++){
+        for(int j=0; j<c;j++){
+            int sum = 0;
+            for(int k=0;k<c;k++) sum += b[i][k];
+            for(int k=0;k<r;k++) sum += b[k][j];
+            sum -= b[i][j];
+            cout<<(sum+a[i][j])%2<<" ";
         }
         cout<<endl;
     }
