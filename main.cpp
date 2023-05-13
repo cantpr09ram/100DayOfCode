@@ -2,9 +2,10 @@
 #include <vector> 
 using namespace std;
 int main(){
-	int a[] = {1, 2, 3};
-	int b = 4;
-	swap(b, a[1]);
-	cout<<b<<a[1];
+	vector <pair<int, int>> a;
+	a.push_back(make_pair(1, 2));
+	a.push_back(make_pair(1, 2));
+	a.push_back(make_pair(1, 2));
+	cout<<a.size();
 	return 0;
 }
