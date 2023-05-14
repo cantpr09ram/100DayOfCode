@@ -1,52 +1,33 @@
-#include <iostream>
-#include <vector>
-#include <algorithm>
+#include <iostream> 
 using namespace std;
 
-int cmp(pair<int,int>a,pair<int,int>b){
-    if(a.first!=b.first)return a.first>b.first;
-    else return a.second<b.second;
-}
 int main(void){
-    int n, m;
+    string s0, s1;
+    int left, right;
+    int len0=0, len1;
+    
     //========================== 
     ios::sync_with_stdio(0);
     cin.tie(0);
     //========================== 
-    cin>>n;
-    int a[2*n];
-    for(int i=0; i<2*n; i++) cin>>a[i];
+    cin >> s0;
     
-    cin>>m;
-    int b[2*m];
-    for(int i=0; i<2*m; i++) cin>>b[i];
-    vector <pair<int, int>> ans;
-
-    for(int i=0; i<2*n; i+=2){
-        ans.push_back(make_pair(a[i], a[i+1]));
+    left = 0;
+    while(left < s0.length()){
+        len1 = 1;
+        right = left+1;
+        while(right!=s0.length() && s0[right]-s0[right-1]==1){
+            right++;
     }
     
-    for(int i=0; i<2*m; i+=2){
-        bool x=false;
-        for(int j=0; j<ans.size(); j++){
-            if(b[i] == ans[j].first){
-                x = true;
-                ans[j].second += b[i+1];
-            }
-        }
-        if(!x){
-            ans.push_back(make_pair(b[i], b[i+1]));
-        }
+    len1 = right - left;
+    if(len1 >= len0){
+        len0 = len1;
+        s1 = s0.substr(left, len0);
     }
-    sort(ans.begin(), ans.end(), cmp);
-    int c = 0;
-    for(int j=0; j<ans.size(); j++){
-        if(ans[j].second != 0){
-            cout<<ans[j].first<<":"<<ans[j].second<<endl;
-            c += 1;
-        }
+    left = right;
     }
-    if(c == 0) cout<<"NULL!";
-
+ 
+    cout << len0 << ' ' << s1;
     return 0;
 }
