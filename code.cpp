@@ -1,33 +1,30 @@
 #include <iostream> 
+#include <queue>
+
 using namespace std;
 
 int main(void){
-    string s0, s1;
-    int left, right;
-    int len0=0, len1;
-    
+    priority_queue<int, vector<int>, greater<int>> arr;
+    long long n, ans=0, tmp;
     //========================== 
     ios::sync_with_stdio(0);
     cin.tie(0);
     //========================== 
-    cin >> s0;
-    
-    left = 0;
-    while(left < s0.length()){
-        len1 = 1;
-        right = left+1;
-        while(right!=s0.length() && s0[right]-s0[right-1]==1){
-            right++;
+    cin>>n;
+    for(int i=0;i<n;i++){
+        cin>>tmp;
+        arr.push(tmp);
     }
-    
-    len1 = right - left;
-    if(len1 >= len0){
-        len0 = len1;
-        s1 = s0.substr(left, len0);
+    while(arr.size() > 1){
+        long long a = arr.top();
+        arr.pop();
+        long long b = arr.top();
+        arr.pop();
+        arr.push(a+b);
+        ans += a+b;
+        //cout<<a<<b<<a+b;
+
     }
-    left = right;
-    }
- 
-    cout << len0 << ' ' << s1;
+    cout<<ans;
     return 0;
 }
