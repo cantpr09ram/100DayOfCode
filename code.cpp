@@ -1,34 +1,27 @@
 #include <iostream> 
 #include <queue>
-
+#include <algorithm>
 using namespace std;
-
+double cmp(pair<double,string>a, pair<double, string>b){
+    return a.first > b.first;
+}
 int main(void){
-    
-    long long n, ans=0, tmp;
+    int n, tmp, p, l, w, r;;
     //========================== 
     ios::sync_with_stdio(0);
     cin.tie(0);
-    //========================== 
-    
-    while (cin >> n && n != 0){
-        priority_queue<int, vector<int>, greater<int>> arr;
-        ans = 0;
-        for(int i=0;i<n;i++){
-            cin>>tmp;
-            arr.push(tmp);
-        }
-        while(arr.size() > 1){
-            long long a = arr.top();
-            arr.pop();
-            long long b = arr.top();
-            arr.pop();
-            arr.push(a+b);
-            ans += a+b;
-            //cout<<a<<b<<a+b;
+    //==========================
+    cin>>n;
+    pair<double, string> arr[n];
+    for(int i=0;i<n;i++){
+        cin>>arr[i].second>>p>>l>>w>>r;
+        arr[i].first = (double)p*w*r/l;
+        
+    }
 
-        }
-        cout<<ans<<endl;
+    sort(arr,arr+n);
+    for(int i=n-1;i>=0;i--){
+        cout<<arr[i].second<<endl;
     }
     return 0;
 }
