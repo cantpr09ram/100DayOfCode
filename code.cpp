@@ -1,32 +1,34 @@
-#include <iostream> 
+#include <iostream>
+#include <vector>
+#include <algorithm> //for sort()
 using namespace std;
-
 int main(void){
-    int n, m;
-    char ch;
+    int n, d, s, t;
+    vector<pair<int, int>> course[6]; //依題意 [0] 不用
+    int count = 0, time;
     //========================== 
     ios::sync_with_stdio(0);
     cin.tie(0);
     //==========================
-    cin>>n>>m;
-    cin>>ch;
-    char arr[n][m];
-    long long tmp;
-    for(int i=0;i<n;i++){
-        cin>>tmp;
-        for(int j=m-1;j>=0;j--){
-            if(tmp %2 == 1){
-                arr[i][j] = ch;
-            }else{
-                arr[i][j] = '.';
+    cin >> n;
+    while(n--){
+        cin >> d >> s >> t;
+        course[d].push_back({t, s}); //結束 vs. 開始
+    }
+    //Greedy (Activity Selection Problem)
+    for(int i=1; i<=5; i++) sort(course[i].begin(), course[i].end());
+
+    for(int i=1; i<=5; i++){
+        if(course[i].size() == 0) continue;
+        count++;
+        time = course[i][0].first;
+        for(int j=1; j<course[i].size(); j++){
+            if(course[i][j].second >= time){
+                count++;
+                time = course[i][j].first;
             }
-            tmp /= 2;
         }
-    }
-    for(int i=0;i<n;i++){
-        for(int j=0;j<m;j++){
-            cout<<arr[i][j]<<" ";
-        }
-        cout<<endl;
-    }
+    } 
+    cout << count; 
+    return 0;
 }
