@@ -1,34 +1,38 @@
-#include <iostream>
-#include <vector>
-#include <algorithm> //for sort()
+#include <iostream> 
 using namespace std;
+
+bool recur_split(int x, int y, int z, int m);
+ 
+int n, t[16]; //大小依題意
+ 
 int main(void){
-    int n, d, s, t;
-    vector<pair<int, int>> course[6]; //依題意 [0] 不用
-    int count = 0, time;
+    int total = 0;
+    
     //========================== 
     ios::sync_with_stdio(0);
     cin.tie(0);
     //==========================
+    
     cin >> n;
-    while(n--){
-        cin >> d >> s >> t;
-        course[d].push_back({t, s}); //結束 vs. 開始
+    for(int i=0; i<n; i++ ){
+        cin >> t[i];
+        total += t[i];
     }
-    //Greedy (Activity Selection Problem)
-    for(int i=1; i<=5; i++) sort(course[i].begin(), course[i].end());
-
-    for(int i=1; i<=5; i++){
-        if(course[i].size() == 0) continue;
-        count++;
-        time = course[i][0].first;
-        for(int j=1; j<course[i].size(); j++){
-            if(course[i][j].second >= time){
-                count++;
-                time = course[i][j].first;
-            }
-        }
-    } 
-    cout << count; 
+    
+    if(total % 3) cout << "NO";
+    else cout << (recur_split(total/3, total/3, total/3, 0)?"YES":"NO");
+    
     return 0;
+}
+ 
+bool recur_split(int x, int y, int z, int m){
+    if(!x && !y && !z) return true; //完成題目要求的分配
+    
+    if(x >= t[m] && recur_split(x-t[m], y, z, m+1)) return true;
+    
+    if(y >= t[m] && recur_split(x, y-t[m], z, m+1)) return true;
+    
+    if(z >= t[m] && recur_split(x, y, z-t[m], m+1)) return true;
+    
+    return false;
 }
