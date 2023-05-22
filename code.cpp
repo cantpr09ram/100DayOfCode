@@ -1,23 +1,43 @@
 #include <iostream>
 #include <vector>
-
+#include <algorithm>
 using namespace std;
 
-int main(void) {
-    int a, b;
-    while (cin>>a>>b) {
-        int n=0;
-        for(int i=a;i<=b;i++) {
-            if(i == 1) continue;
-            int x = 1;
-            for(int j=2;j*j<=i;j++){
-                if(i%j == 0) {
-                    x = 0;
+bool cmp(pair<int ,int>a, pair<int, int>b){
+    return a.first<b.first;
+}
+
+int main() {
+    //========================== 
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    //==========================
+    vector <pair<int, int>> a;
+    int n, tmp;
+    cin>>n;
+    for(int i=0;i<n;i++){
+        cin>>tmp;
+        if(!a.empty()) {
+            for (int j=0;j<a.size();j++) {
+                if(a[j].first == tmp) {
+                    a[j].second+=1;
+                    break;
+                }else if(j == a.size()-1){
+                    pair<int, int> x = {tmp, 1};
+                    a.push_back(x);
                     break;
                 }
             }
-            n+=x;
+        }else{
+            pair<int, int> x = {tmp, 1};
+            a.push_back(x);
         }
-        cout<<n<<endl;
     }
+    sort(a.begin(),a.end(),cmp);
+
+    for (int j=0;j<a.size();j++) {
+        cout<<a[j].first<<" "<<a[j].second<<endl;        
+    }
+
+    return 0;
 }
