@@ -1,40 +1,34 @@
 #include <iostream>
-#include <vector>
 #include <algorithm>
 using namespace std;
-
-bool cmp(pair<string, int> a, pair<string, int> b){
-    if (a.first[8]==b.first[8]){
-        if (a.first[0] != b.first[0]){
-            return a.first[0]<b.first[0];
-        }else{
-            return a.second < b.second;
-        }
-    } else {
-        return a.first[8]<b.first[8];
+void wash(int a[], int n){
+    int b[n];
+    for(int i=0;i<n;i+=2){
+        b[i] = a[i/2];
+        b[i+1] = a[n/2 + i/2];
+    }
+    for(int i=0;i<n;i++){
+        a[i] = b[i];
     }
 }
-
 int main() {
     //========================== 
     ios::sync_with_stdio(0);
     cin.tie(0);
     //==========================
-    int n;
-    vector <pair<string, int>> names;
-    cin>>n;
-    string students[n];
+    int n, m;
+    cin>>n>>m;
+    int cards[n];
     for(int i=0;i<n;i++){
-        string tmp1;
-        cin>>tmp1>>students[i];
-        pair<string, int>tmp;
-        tmp = make_pair(tmp1, i);
-        names.push_back(tmp);
+        cin>>cards[i];
     }
-    sort(names.begin(), names.end(), cmp);
+
+    for(int i=0;i<m;i++){
+        wash(cards, n);
+    }
 
     for(int i=0;i<n;i++){
-        cout<<names[i].first[8]<<": "<<students[names[i].second]<<endl;
+        cout<<cards[i]<<" ";
     }
     return 0;
 }
