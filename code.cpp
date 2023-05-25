@@ -1,34 +1,22 @@
 #include <iostream>
-#include <algorithm>
+#include <string>
 using namespace std;
-void wash(int a[], int n){
-    int b[n];
-    for(int i=0;i<n;i+=2){
-        b[i] = a[i/2];
-        b[i+1] = a[n/2 + i/2];
-    }
-    for(int i=0;i<n;i++){
-        a[i] = b[i];
-    }
-}
+
 int main() {
-    //========================== 
-    ios::sync_with_stdio(0);
-    cin.tie(0);
-    //==========================
-    int n, m;
-    cin>>n>>m;
-    int cards[n];
-    for(int i=0;i<n;i++){
-        cin>>cards[i];
-    }
-
-    for(int i=0;i<m;i++){
-        wash(cards, n);
-    }
-
-    for(int i=0;i<n;i++){
-        cout<<cards[i]<<" ";
-    }
-    return 0;
+	//cin.sync_with_stdio(false), cin.tie(nullptr);
+	string timePeriod[4] = { "morning", "afternoon", "night", "early morning" };
+	int totalRain, rains[4] = {}, rain, maximumDayRain = -1, maximumTimeRain = -1, maximumAtDay, maximumAtTime, buffer1, buffer2;
+	for (int i = 1; i <= 7; ++i) {
+		totalRain = 0;
+		for (int j = 0; j < 4; ++j) {
+			scanf("%d.%d", &buffer1, &buffer2), rain = buffer1 * 10 + buffer2;
+			totalRain += rain, rains[j] += rain;
+		}
+		if (totalRain > maximumDayRain)
+			maximumDayRain = totalRain, maximumAtDay = i;
+	}
+	for (int i = 0; i < 4; ++i)
+		if (rains[i] > maximumTimeRain)
+			maximumTimeRain = rains[i], maximumAtTime = i;
+	cout << maximumAtDay << '\n' << timePeriod[maximumAtTime] << '\n';
 }
