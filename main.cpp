@@ -2,10 +2,9 @@
 #include <vector> 
 using namespace std;
 int main(){
-	vector <pair<int, int>> a;
-	a.push_back(make_pair(1, 2));
-	a.push_back(make_pair(1, 2));
-	a.push_back(make_pair(1, 2));
-	cout<<a.size();
+	float a;
+	cin>>a;
+	cout<<a+1;
+	
 	return 0;
 }

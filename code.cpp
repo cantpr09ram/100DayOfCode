@@ -1,22 +1,45 @@
 #include <iostream>
-#include <string>
+#include <vector>
+#include <algorithm>
 using namespace std;
 
 int main() {
-	//cin.sync_with_stdio(false), cin.tie(nullptr);
-	string timePeriod[4] = { "morning", "afternoon", "night", "early morning" };
-	int totalRain, rains[4] = {}, rain, maximumDayRain = -1, maximumTimeRain = -1, maximumAtDay, maximumAtTime, buffer1, buffer2;
-	for (int i = 1; i <= 7; ++i) {
-		totalRain = 0;
-		for (int j = 0; j < 4; ++j) {
-			scanf("%d.%d", &buffer1, &buffer2), rain = buffer1 * 10 + buffer2;
-			totalRain += rain, rains[j] += rain;
-		}
-		if (totalRain > maximumDayRain)
-			maximumDayRain = totalRain, maximumAtDay = i;
+    //========================== 
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    //==========================
+	vector <int> arr;
+	int tmp, n;
+	while (cin>>tmp && tmp != 0){
+		arr.push_back(tmp);
 	}
-	for (int i = 0; i < 4; ++i)
-		if (rains[i] > maximumTimeRain)
-			maximumTimeRain = rains[i], maximumAtTime = i;
-	cout << maximumAtDay << '\n' << timePeriod[maximumAtTime] << '\n';
+	cin>>n;
+
+	for(int j=0;j<n;j++){
+		int arr1[arr.size()] = {0};
+		if(arr[0]>arr[1]){
+			arr1[1] += arr[0]*0.1;
+		}
+
+		for(int i=1;i<arr.size()-1;i++){
+			if(arr[i]>arr[i-1]){
+				arr1[i-1] += arr[i]*0.05;
+			}
+			if(arr[i]>arr[i+1]){
+				arr1[i+1] += arr[i]*0.05;
+			}
+		}
+		
+		if(arr[arr.size()-1]>arr[arr.size()-2]){
+			arr1[arr.size()-2] += arr[arr.size()-1]*0.1;
+		}
+		
+		for(int i=0;i<arr.size();i++){
+			arr[i]+=arr1[i];
+		}
+	}
+	for(int i=0;i<arr.size();i++){
+		cout<<arr[i]<<" ";
+	}
+    return 0;
 }
