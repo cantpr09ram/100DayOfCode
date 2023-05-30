@@ -1,33 +1,27 @@
 #include <iostream>
-#include <vector>
-#include <algorithm>
+#include <cmath>
 using namespace std;
 
-bool cmp(pair<int, int>a, pair<int, int>b) {
-    if(a.first == b.first){
-        return a.second < b.second;
-    }else{
-        return a.first < b.first;
-    }
-}
-
 int main() {
-	int n, tmpa, tmpb;
-    vector<pair<int, int>>arr;
+	long long x;
     //========================== 
     ios::sync_with_stdio(0);
     cin.tie(0);
     //==========================
-    cin>>n;
-    for(int i=0;i<n;i++){
-        cin>>tmpa>>tmpb;
-        arr.push_back(make_pair(tmpa, tmpb));
+    while(cin>>x){
+        long long sum = 0;
+        for(int i=2; i<=sqrt(x);i++){
+            while(x%i == 0){
+                sum += i;
+                //cout<<i;
+                x /= i;
+            }
+        }
+        if(x != 1){
+            sum += x;
+        }
+        cout<<sum<<endl;
     }
-    sort(arr.begin(), arr.end(), cmp);
-    for(int i=0;i<n;i++){
-        cout<<arr[i].first<<" "<<arr[i].second<<endl;
-    }
-
     return 0;
 }
     
